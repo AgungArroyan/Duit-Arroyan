@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dompet Keluarga — Keuangan Bulanan Simpel</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Pengaturan scrollbar halus dan transisi antarmuka */
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .card-shadow {
+      box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+  <!-- Toast Notification Container (Pengganti alert) -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none max-w-sm w-[calc(100%-2.5rem)]"></div>
+
+  <!-- Modal Konfirmasi Custom (Pengganti confirm) -->
+  <div id="confirm-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 transform transition-all">
+      <div class="flex items-center gap-3 mb-3">
+        <div id="confirm-icon-wrap" class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+          </svg>
+        </div>
+        <h3 id="confirm-title" class="text-lg font-bold text-slate-900">Konfirmasi</h3>
+      </div>
+      <p id="confirm-message" class="text-sm text-slate-600 leading-relaxed mb-6">Apakah Anda yakin ingin melanjutkan?</p>
+      <div class="flex items-center justify-end gap-3">
+        <button id="confirm-cancel-btn" type="button" class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">
+          Batal
+        </button>
+        <button id="confirm-ok-btn" type="button" class="px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 transition">
+          Ya, Lanjutkan
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navigasi Bulan -->
+  <header class="bg-white border-b border-slate-200/80 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <!-- Brand / Judul Aplikasi -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-xs">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Dompet Keluarga Arroyan
+            <p class="text-xs text-slate-500">Catatan Keuangan Bulanan</p>
+          </div>
+        </div>
+
+        <!-- Tombol Menu Cepat di Mobile -->
+        <div class="flex sm:hidden items-center gap-1.5">
+          <button id="btn-sample-mobile" type="button" title="Isi Contoh Data" class="p-2 rounded-xl text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
+            Contoh
+          </button>
+          <button id="btn-reset-mobile" type="button" title="Reset Data" class="p-2 rounded-xl text-xs font-medium text-rose-600 bg-rose-50 hover:bg-rose-100 transition">
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Kontrol Pemilih Bulan & Tahun -->
+      <div class="flex items-center justify-between sm:justify-end gap-2">
+        <div class="flex items-center bg-slate-100 p-1 rounded-xl w-full sm:w-auto justify-between">
+          <button id="btn-prev-month" type="button" aria-label="Bulan Sebelumnya" class="p-2 rounded-lg text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-2xs transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+
+          <div class="flex items-center gap-1.5 px-2">
+            <select id="select-month" aria-label="Pilih Bulan" class="bg-transparent text-sm font-bold text-slate-800 focus:outline-none cursor-pointer py-1">
+              <option value="01">Januari</option>
+              <option value="02">Februari</option>
+              <option value="03">Maret</option>
+              <option value="04">April</option>
+              <option value="05">Mei</option>
+              <option value="06">Juni</option>
+              <option value="07">Juli</option>
+              <option value="08">Agustus</option>
+              <option value="09">September</option>
+              <option value="10">Oktober</option>
+              <option value="11">November</option>
+              <option value="12">Desember</option>
+            </select>
+            <select id="select-year" aria-label="Pilih Tahun" class="bg-transparent text-sm font-bold text-slate-800 focus:outline-none cursor-pointer py-1">
+              <!-- Diisi otomatis via JS -->
+            </select>
+          </div>
+
+          <button id="btn-next-month" type="button" aria-label="Bulan Berikutnya" class="p-2 rounded-lg text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-2xs transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Aksi Data Desktop -->
+        <div class="hidden sm:flex items-center gap-2 ml-2">
+          <button id="btn-sample-desktop" type="button" class="px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
+            Isi Contoh Data
+          </button>
+          <button id="btn-reset-desktop" type="button" class="px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 transition">
+            Hapus Semua
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Konten Utama -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+
+    <!-- BAGIAN 1: AKUMULASI SELURUH BULAN (Total Sisa Uang & Total Tabungan) -->
+    <section aria-label="Ringkasan Akumulasi Seluruh Bulan">
+      <div class="flex items-center justify-between mb-2.5">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500">Akumulasi Keseluruhan (Semua Bulan)</h2>
+        <span id="recorded-months-badge" class="text-xs font-medium text-slate-500 bg-slate-200/70 px-2.5 py-0.5 rounded-full">0 bulan tercatat</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Total Sisa Uang (Seluruh Bulan) -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden">
+          <div class="flex items-start justify-between gap-4 relative z-10">
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-300">Total Sisa Uang (Seluruh Bulan)</p>
+              <p id="stat-all-remaining" class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1.5 tabular-nums">Rp 0</p>
+              <p class="text-xs text-slate-400 mt-1.5">Akumulasi sisa kas bebas dari semua bulan</p>
+            </div>
+            <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Tabungan (Seluruh Bulan) -->
+        <div class="bg-gradient-to-br from-emerald-600 to-teal-700 text-white rounded-2xl p-5 shadow-sm relative overflow-hidden">
+          <div class="flex items-start justify-between gap-4 relative z-10">
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-emerald-100">Total Tabungan (Seluruh Bulan)</p>
+              <p id="stat-all-savings" class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1.5 tabular-nums">Rp 0</p>
+              <p class="text-xs text-emerald-100/80 mt-1.5">Akumulasi tabungan wajib keluarga terkumpul</p>
+            </div>
+            <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 2: RINGKASAN BULAN AKTIF -->
+    <section aria-label="Ringkasan Bulan Ini">
+      <div class="flex items-center justify-between mb-2.5">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500">
+          Ringkasan <span id="active-month-label" class="text-slate-800">Bulan Ini</span>
+        </h2>
+        <span id="month-health-badge" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">Belum ada data</span>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <!-- Card 1: Pemasukan Bulan Ini -->
+        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 card-shadow">
+          <div class="flex items-center gap-2 text-blue-600 mb-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </span>
+            <span class="text-xs font-semibold text-slate-500">Pemasukan</span>
+          </div>
+          <p id="stat-month-income" class="text-lg sm:text-xl font-bold text-slate-900 tabular-nums truncate">Rp 0</p>
+        </div>
+
+        <!-- Card 2: Tabungan Wajib Bulan Ini -->
+        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 card-shadow">
+          <div class="flex items-center gap-2 text-emerald-600 mb-2">
+            <span class="w-7 h-7 rounded-lg bg-emerald-50 flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </span>
+            <span class="text-xs font-semibold text-slate-500">Tabungan Wajib</span>
+          </div>
+          <p id="stat-month-savings" class="text-lg sm:text-xl font-bold text-emerald-700 tabular-nums truncate">Rp 0</p>
+        </div>
+
+        <!-- Card 3: Pengeluaran Bulan Ini -->
+        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 card-shadow">
+          <div class="flex items-center gap-2 text-amber-600 mb-2">
+            <span class="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+              </svg>
+            </span>
+            <span class="text-xs font-semibold text-slate-500">Pengeluaran</span>
+          </div>
+          <p id="stat-month-expense" class="text-lg sm:text-xl font-bold text-amber-700 tabular-nums truncate">Rp 0</p>
+        </div>
+
+        <!-- Card 4: Sisa Uang (Bulan Ini) -->
+        <div id="card-month-remaining" class="bg-white rounded-2xl p-4 sm:p-5 border-2 border-slate-200 card-shadow transition-colors">
+          <div class="flex items-center gap-2 text-indigo-600 mb-2">
+            <span id="icon-month-remaining" class="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </span>
+            <span class="text-xs font-semibold text-slate-600">Sisa Uang (Bulan Ini)</span>
+          </div>
+          <p id="stat-month-remaining" class="text-lg sm:text-xl font-extrabold text-slate-900 tabular-nums truncate">Rp 0</p>
+        </div>
+      </div>
+
+      <!-- Visual Bar Alokasi Dana Bulan Ini -->
+      <div class="mt-3 bg-white rounded-2xl p-4 border border-slate-200/80 card-shadow">
+        <div class="flex flex-wrap items-center justify-between gap-2 text-xs mb-2">
+          <span class="font-semibold text-slate-600">Alokasi Pemasukan Bulan Ini</span>
+          <div class="flex flex-wrap items-center gap-3 text-slate-500">
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>Tabungan (<span id="pct-savings">0%</span>)</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>Pengeluaran (<span id="pct-expense">0%</span>)</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>Sisa (<span id="pct-remaining">0%</span>)</span>
+          </div>
+        </div>
+        <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden flex">
+          <div id="bar-savings" class="bg-emerald-500 h-full transition-all duration-300" style="width: 0%"></div>
+          <div id="bar-expense" class="bg-amber-500 h-full transition-all duration-300" style="width: 0%"></div>
+          <div id="bar-remaining" class="bg-indigo-500 h-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 3: INPUT & DAFTAR TRANSAKSI BULAN INI -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- Kolom Kiri (5 Kolom di Desktop): Pemasukan & Tabungan Wajib -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <!-- Form & Daftar Pemasukan -->
+        <section class="bg-white rounded-2xl p-5 border border-slate-200/80 card-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">1. Pemasukan Keluarga</h3>
+              <p class="text-xs text-slate-500">Gaji, bonus, atau pendapatan bulan ini</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold">+ Masuk</span>
+          </div>
+
+          <form id="form-income" class="space-y-3">
+            <div>
+              <label for="income-source" class="block text-xs font-semibold text-slate-700 mb-1">Sumber Pemasukan</label>
+              <input
+                id="income-source"
+                type="text"
+                placeholder="Contoh: Gaji Bulanan, Usaha, Bonus"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                required
+              />
+            </div>
+            <div>
+              <label for="income-amount" class="block text-xs font-semibold text-slate-700 mb-1">Nominal (Rp)</label>
+              <div class="relative">
+                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-slate-400">Rp</span>
+                <input
+                  id="income-amount"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="0"
+                  class="currency-input w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-900 tabular-nums focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                  required
+                />
+              </div>
+            </div>
+            <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white text-sm font-semibold transition shadow-xs flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+              Tambah Pemasukan
+            </button>
+          </form>
+
+          <!-- Daftar Pemasukan Bulan Ini -->
+          <div class="mt-4 pt-4 border-t border-slate-100">
+            <h4 class="text-xs font-semibold text-slate-500 mb-2.5">Rincian Pemasukan Bulan Ini</h4>
+            <ul id="list-income" class="space-y-2">
+              <!-- Diisi via JS -->
+            </ul>
+          </div>
+        </section>
+
+        <!-- Form Tabungan Wajib Bulan Ini -->
+        <section class="bg-white rounded-2xl p-5 border border-slate-200/80 card-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">2. Tabungan Wajib</h3>
+              <p class="text-xs text-slate-500">Dana yang langsung disisihkan bulan ini</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-bold">Wajib</span>
+          </div>
+
+          <form id="form-savings" class="space-y-3">
+            <div>
+              <label for="savings-amount" class="block text-xs font-semibold text-slate-700 mb-1">Nominal Tabungan Wajib Bulan Ini (Rp)</label>
+              <div class="relative">
+                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-slate-400">Rp</span>
+                <input
+                  id="savings-amount"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="0"
+                  class="currency-input w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-bold text-emerald-700 tabular-nums focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition"
+                />
+              </div>
+            </div>
+            <div>
+              <label for="savings-note" class="block text-xs font-semibold text-slate-700 mb-1">Tujuan / Catatan Tabungan (Opsional)</label>
+              <input
+                id="savings-note"
+                type="text"
+                placeholder="Contoh: Dana Darurat, Pendidikan Anak"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition"
+              />
+            </div>
+            <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white text-sm font-semibold transition shadow-xs flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              Simpan Tabungan Wajib
+            </button>
+          </form>
+        </section>
+
+      </div>
+
+      <!-- Kolom Kanan (7 Kolom di Desktop): Pengeluaran (Dropdown & Ketik Sendiri) -->
+      <div class="lg:col-span-7">
+        <section class="bg-white rounded-2xl p-5 border border-slate-200/80 card-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">3. Pengeluaran Keluarga</h3>
+              <p class="text-xs text-slate-500">Pilih dari daftar atau tulis nama pengeluaran sendiri</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 text-xs font-bold">- Keluar</span>
+          </div>
+
+          <!-- Form Tambah Pengeluaran -->
+          <form id="form-expense" class="space-y-3.5 bg-slate-50/80 p-4 rounded-xl border border-slate-200/60">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <!-- Pilihan Dropdown Jenis Pengeluaran -->
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label for="expense-category-select" class="block text-xs font-semibold text-slate-700">Jenis Pengeluaran</label>
+                  <button type="button" id="btn-toggle-custom-expense" class="text-[11px] font-semibold text-amber-700 hover:text-amber-800 underline underline-offset-2">
+                    + Ketik Sendiri
+                  </button>
+                </div>
+                <select
+                  id="expense-category-select"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition cursor-pointer"
+                >
+                  <!-- Diisi otomatis dari daftar kategori default + custom -->
+                </select>
+              </div>
+
+              <!-- Nominal Pengeluaran -->
+              <div>
+                <label for="expense-amount" class="block text-xs font-semibold text-slate-700 mb-1">Nominal (Rp)</label>
+                <div class="relative">
+                  <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-slate-400">Rp</span>
+                  <input
+                    id="expense-amount"
+                    type="text"
+                    inputmode="numeric"
+                    placeholder="0"
+                    class="currency-input w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-900 tabular-nums focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Input Nama Pengeluaran Custom (Muncul saat user pilih 'Isi Sendiri' atau klik '+ Ketik Sendiri') -->
+            <div id="custom-expense-wrapper" class="hidden space-y-2 pt-1">
+              <label for="expense-custom-name" class="block text-xs font-semibold text-amber-800">
+                Tulis Nama Jenis Pengeluaran Sendiri
+              </label>
+              <input
+                id="expense-custom-name"
+                type="text"
+                placeholder="Contoh: Susu & Popok Anak, Servis Motor, Arisan RT..."
+                class="w-full px-3.5 py-2.5 rounded-xl border border-amber-300 bg-white text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/25 focus:border-amber-500 transition"
+              />
+              <label class="inline-flex items-center gap-2 text-xs text-slate-600 cursor-pointer select-none">
+                <input id="save-custom-category" type="checkbox" checked class="rounded border-slate-300 text-amber-600 focus:ring-amber-500" />
+                <span>Simpan nama ini ke pilihan dropdown untuk bulan berikutnya</span>
+              </label>
+            </div>
+
+            <!-- Catatan Tambahan Opsional -->
+            <div>
+              <label for="expense-note" class="block text-xs font-semibold text-slate-700 mb-1">Keterangan Tambahan (Opsional)</label>
+              <input
+                id="expense-note"
+                type="text"
+                placeholder="Contoh: Minggu ke-1, Belanja di pasar, dll."
+                class="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+              />
+            </div>
+
+            <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-[0.99] text-white text-sm font-semibold transition shadow-xs flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+              Catat Pengeluaran
+            </button>
+          </form>
+
+          <!-- Daftar Pengeluaran Bulan Ini -->
+          <div class="mt-5">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Daftar Pengeluaran Bulan Ini</h4>
+              <span id="expense-count-badge" class="text-xs font-semibold text-slate-500">0 item</span>
+            </div>
+
+            <ul id="list-expense" class="space-y-2.5">
+              <!-- Diisi via JS -->
+            </ul>
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+    <!-- BAGIAN 4: REKAP RIWAYAT PER BULAN -->
+    <section class="bg-white rounded-2xl p-5 border border-slate-200/80 card-shadow">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+        <div>
+          <h3 class="text-base font-bold text-slate-900">Rekap Per Bulan</h3>
+          <p class="text-xs text-slate-500">Klik baris bulan untuk melihat atau mengubah rinciannya</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[600px]">
+          <thead>
+            <tr class="border-b border-slate-200 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+              <th class="py-2.5 px-3">Bulan</th>
+              <th class="py-2.5 px-3 text-right">Pemasukan</th>
+              <th class="py-2.5 px-3 text-right">Tabungan Wajib</th>
+              <th class="py-2.5 px-3 text-right">Pengeluaran</th>
+              <th class="py-2.5 px-3 text-right">Sisa Uang</th>
+            </tr>
+          </thead>
+          <tbody id="monthly-recap-body" class="divide-y divide-slate-100 text-sm">
+            <!-- Diisi via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Simpel -->
+  <footer class="max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 text-center text-xs text-slate-400">
+    Data tersimpan otomatis di perangkat Anda (Browser LocalStorage).
+  </footer>
+
+  <script>
+    /**
+     * =========================================================================
+     * APLIKASI KEUANGAN KELUARGA BULANAN
+     * Fitur utama:
+     * 1. Manajemen data per bulan (YYYY-MM) tersimpan otomatis di localStorage.
+     * 2. Pemasukan, Tabungan Wajib, Pengeluaran (Dropdown + Isi Sendiri).
+     * 3. Kalkulasi otomatis:
+     *    - Sisa Uang (Bulan Ini) = Pemasukan - Tabungan Wajib - Pengeluaran
+     *    - Total Sisa Uang (Seluruh Bulan) = Akumulasi Sisa Uang semua bulan
+     *    - Total Tabungan = Akumulasi Tabungan Wajib semua bulan
+     * =========================================================================
+     */
+
+    (function () {
+      'use strict';
+
+      // Kunci penyimpanan LocalStorage
+      const STORAGE_KEY = 'dompet_keluarga_data_v1';
+      const CUSTOM_CAT_KEY = 'dompet_keluarga_custom_categories_v1';
+
+      // Daftar kategori pengeluaran bawaan (Dropdown)
+      const DEFAULT_EXPENSE_CATEGORIES = [
+        'Belanja Bulanan & Dapur',
+        'Listrik, Air & Internet',
+        'Cicilan / Kontrakan Rumah',
+        'Pendidikan & Sekolah Anak',
+        'Transportasi & Bensin',
+        'Kesehatan & Obat-obatan',
+        'Makan di Luar & Jajan',
+        'Sosial, Zakat & Keluarga',
+        'Perawatan Rumah & Lainnya'
+      ];
+
+      // Nilai khusus untuk opsi ketik sendiri pada dropdown
+      const CUSTOM_OPTION_VALUE = '__CUSTOM_EXPENSE__';
+
+      // Nama bulan dalam Bahasa Indonesia
+      const MONTH_NAMES = {
+        '01': 'Januari',
+        '02': 'Februari',
+        '03': 'Maret',
+        '04': 'April',
+        '05': 'Mei',
+        '06': 'Juni',
+        '07': 'Juli',
+        '08': 'Agustus',
+        '09': 'September',
+        '10': 'Oktober',
+        '11': 'November',
+        '12': 'Desember'
+      };
+
+      // State Aplikasi
+      const now = new Date();
+      let currentYear = String(now.getFullYear());
+      let currentMonth = String(now.getMonth() + 1).padStart(2, '0');
+      let appData = {}; // Struktur: { "2026-11": { incomes: [], mandatorySavings: 0, savingsNote: "", expenses: [] } }
+      let customCategories = [];
+
+      // Referensi Elemen DOM
+      const elSelectMonth = document.getElementById('select-month');
+      const elSelectYear = document.getElementById('select-year');
+      const elBtnPrevMonth = document.getElementById('btn-prev-month');
+      const elBtnNextMonth = document.getElementById('btn-next-month');
+
+      const elStatAllRemaining = document.getElementById('stat-all-remaining');
+      const elStatAllSavings = document.getElementById('stat-all-savings');
+      const elRecordedMonthsBadge = document.getElementById('recorded-months-badge');
+
+      const elActiveMonthLabel = document.getElementById('active-month-label');
+      const elMonthHealthBadge = document.getElementById('month-health-badge');
+      const elStatMonthIncome = document.getElementById('stat-month-income');
+      const elStatMonthSavings = document.getElementById('stat-month-savings');
+      const elStatMonthExpense = document.getElementById('stat-month-expense');
+      const elStatMonthRemaining = document.getElementById('stat-month-remaining');
+      const elCardMonthRemaining = document.getElementById('card-month-remaining');
+
+      const elPctSavings = document.getElementById('pct-savings');
+      const elPctExpense = document.getElementById('pct-expense');
+      const elPctRemaining = document.getElementById('pct-remaining');
+      const elBarSavings = document.getElementById('bar-savings');
+      const elBarExpense = document.getElementById('bar-expense');
+      const elBarRemaining = document.getElementById('bar-remaining');
+
+      const elFormIncome = document.getElementById('form-income');
+      const elIncomeSource = document.getElementById('income-source');
+      const elIncomeAmount = document.getElementById('income-amount');
+      const elListIncome = document.getElementById('list-income');
+
+      const elFormSavings = document.getElementById('form-savings');
+      const elSavingsAmount = document.getElementById('savings-amount');
+      const elSavingsNote = document.getElementById('savings-note');
+
+      const elFormExpense = document.getElementById('form-expense');
+      const elExpenseSelect = document.getElementById('expense-category-select');
+      const elBtnToggleCustom = document.getElementById('btn-toggle-custom-expense');
+      const elCustomWrapper = document.getElementById('custom-expense-wrapper');
+      const elExpenseCustomName = document.getElementById('expense-custom-name');
+      const elSaveCustomCat = document.getElementById('save-custom-category');
+      const elExpenseAmount = document.getElementById('expense-amount');
+      const elExpenseNote = document.getElementById('expense-note');
+      const elListExpense = document.getElementById('list-expense');
+      const elExpenseCountBadge = document.getElementById('expense-count-badge');
+
+      const elMonthlyRecapBody = document.getElementById('monthly-recap-body');
+
+      // =========================================================================
+      // UTILITAS FORMAT & PENYIMPANAN
+      // =========================================================================
+
+      /**
+       * Format angka ke mata uang Rupiah (contoh: Rp 1.500.000)
+       */
+      function formatRupiah(amount) {
+        const num = Number(amount) || 0;
+        const isNegative = num < 0;
+        const absFormatted = Math.abs(Math.round(num))
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        return (isNegative ? '-Rp ' : 'Rp ') + absFormatted;
+      }
+
+      /**
+       * Format string angka input dengan pemisah ribuan titik (contoh: "1500000" -> "1.500.000")
+       */
+      function formatNumberInput(rawValue) {
+        const digits = String(rawValue).replace(/\D/g, '');
+        if (!digits) return '';
+        return digits.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      }
+
+      /**
+       * Konversi string angka berformat titik menjadi integer murni
+       */
+      function parseCurrencyInput(formattedValue) {
+        const digits = String(formattedValue).replace(/\D/g, '');
+        return digits ? parseInt(digits, 10) : 0;
+      }
+
+      /**
+       * Escape HTML untuk mencegah XSS pada input teks bebas
+       */
+      function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      /**
+       * Generate ID unik sederhana
+       */
+      function generateId() {
+        return Date.now().toString(36) + Math.random().toString(36).substring(2, 7);
+      }
+
+      /**
+       * Mendapatkan key bulan aktif dalam format YYYY-MM
+       */
+      function getActiveMonthKey() {
+        return `${currentYear}-${currentMonth}`;
+      }
+
+      /**
+       * Mendapatkan label manusiawi untuk key YYYY-MM (contoh: "November 2026")
+       */
+      function formatMonthKeyLabel(key) {
+        const [y, m] = key.split('-');
+        return `${MONTH_NAMES[m] || m} ${y}`;
+      }
+
+      /**
+       * Memuat data dari LocalStorage dengan penanganan error
+       */
+      function loadFromStorage() {
+        try {
+          const savedData = localStorage.getItem(STORAGE_KEY);
+          if (savedData) {
+            appData = JSON.parse(savedData) || {};
+          }
+          const savedCats = localStorage.getItem(CUSTOM_CAT_KEY);
+          if (savedCats) {
+            customCategories = JSON.parse(savedCats) || [];
+          }
+        } catch (err) {
+          console.error('Gagal membaca data dari penyimpanan lokal:', err);
+          appData = {};
+          customCategories = [];
+        }
+      }
+
+      /**
+       * Menyimpan data ke LocalStorage dengan penanganan error
+       */
+      function saveToStorage() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+          localStorage.setItem(CUSTOM_CAT_KEY, JSON.stringify(customCategories));
+        } catch (err) {
+          console.error('Gagal menyimpan data ke penyimpanan lokal:', err);
+          showToast('Gagal menyimpan data ke browser.', 'error');
+        }
+      }
+
+      /**
+       * Mengambil atau menginisialisasi objek data untuk bulan tertentu
+       */
+      function ensureMonthRecord(key) {
+        if (!appData[key]) {
+          appData[key] = {
+            incomes: [],
+            mandatorySavings: 0,
+            savingsNote: '',
+            expenses: []
+          };
+        }
+        return appData[key];
+      }
+
+      /**
+       * Menghitung ringkasan angka untuk satu objek bulan
+       */
+      function calculateMonthSummary(record) {
+        if (!record) {
+          return { income: 0, savings: 0, expense: 0, remaining: 0, hasActivity: false };
+        }
+        const income = (record.incomes || []).reduce((sum, item) => sum + (Number(item.amount) || 0), 0);
+        const savings = Number(record.mandatorySavings) || 0;
+        const expense = (record.expenses || []).reduce((sum, item) => sum + (Number(item.amount) || 0), 0);
+        const remaining = income - savings - expense;
+        const hasActivity = income > 0 || savings > 0 || expense > 0 || (record.incomes?.length > 0) || (record.expenses?.length > 0);
+        return { income, savings, expense, remaining, hasActivity };
+      }
+
+      // =========================================================================
+      // NOTIFIKASI TOAST & MODAL KONFIRMASI CUSTOM
+      // =========================================================================
+
+      function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        const bgClass =
+          type === 'error'
+            ? 'bg-rose-600 text-white'
+            : type === 'warning'
+            ? 'bg-amber-600 text-white'
+            : 'bg-slate-900 text-white';
+
+        toast.className = `${bgClass} px-4 py-3 rounded-xl shadow-lg text-xs sm:text-sm font-medium flex items-center justify-between gap-3 pointer-events-auto transform transition-all duration-200 translate-y-2 opacity-0`;
+        toast.innerHTML = `<span>${escapeHTML(message)}</span>`;
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+          toast.classList.remove('translate-y-2', 'opacity-0');
+        });
+
+        setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => toast.remove(), 220);
+        }, 2800);
+      }
+
+      function showConfirmDialog({ title, message, confirmText = 'Ya, Hapus', isDanger = true }) {
+        return new Promise((resolve) => {
+          const modal = document.getElementById('confirm-modal');
+          const elTitle = document.getElementById('confirm-title');
+          const elMsg = document.getElementById('confirm-message');
+          const btnOk = document.getElementById('confirm-ok-btn');
+          const btnCancel = document.getElementById('confirm-cancel-btn');
+          const iconWrap = document.getElementById('confirm-icon-wrap');
+
+          elTitle.textContent = title;
+          elMsg.textContent = message;
+          btnOk.textContent = confirmText;
+
+          if (isDanger) {
+            btnOk.className = 'px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 transition';
+            iconWrap.className = 'w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0';
+          } else {
+            btnOk.className = 'px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition';
+            iconWrap.className = 'w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0';
+          }
+
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+
+          const cleanup = (result) => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            btnOk.removeEventListener('click', onOk);
+            btnCancel.removeEventListener('click', onCancel);
+            resolve(result);
+          };
+
+          const onOk = () => cleanup(true);
+          const onCancel = () => cleanup(false);
+
+          btnOk.addEventListener('click', onOk);
+          btnCancel.addEventListener('click', onCancel);
+        });
+      }
+
+      // =========================================================================
+      // INISIALISASI DROPDOWN TAHUN & KATEGORI PENGELUARAN
+      // =========================================================================
+
+      function initYearSelector() {
+        const baseYear = now.getFullYear();
+        elSelectYear.innerHTML = '';
+        for (let y = baseYear - 3; y <= baseYear + 3; y++) {
+          const opt = document.createElement('option');
+          opt.value = String(y);
+          opt.textContent = String(y);
+          elSelectYear.appendChild(opt);
+        }
+        elSelectMonth.value = currentMonth;
+        elSelectYear.value = currentYear;
+      }
+
+      /**
+       * Merender ulang dropdown jenis pengeluaran (gabungan kategori default + custom)
+       */
+      function renderExpenseCategoryDropdown(selectedValue = null) {
+        const allCategories = [...DEFAULT_EXPENSE_CATEGORIES];
+        customCategories.forEach((cat) => {
+          if (!allCategories.some((c) => c.toLowerCase() === cat.toLowerCase())) {
+            allCategories.push(cat);
+          }
+        });
+
+        elExpenseSelect.innerHTML = '';
+
+        allCategories.forEach((category) => {
+          const opt = document.createElement('option');
+          opt.value = category;
+          opt.textContent = category;
+          elExpenseSelect.appendChild(opt);
+        });
+
+        // Opsi terakhir untuk mengisi sendiri nama pengeluaran
+        const customOpt = document.createElement('option');
+        customOpt.value = CUSTOM_OPTION_VALUE;
+        customOpt.textContent = '✍️ Isi Sendiri (Tulis Nama Pengeluaran)...';
+        elExpenseSelect.appendChild(customOpt);
+
+        if (selectedValue) {
+          elExpenseSelect.value = selectedValue;
+        }
+        handleExpenseSelectChange();
+      }
+
+      /**
+       * Mengatur tampilan input manual saat dropdown pengeluaran berubah
+       */
+      function handleExpenseSelectChange() {
+        const isCustom = elExpenseSelect.value === CUSTOM_OPTION_VALUE;
+        if (isCustom) {
+          elCustomWrapper.classList.remove('hidden');
+          elExpenseCustomName.required = true;
+          elBtnToggleCustom.textContent = 'Pilih dari Daftar';
+        } else {
+          elCustomWrapper.classList.add('hidden');
+          elExpenseCustomName.required = false;
+          elBtnToggleCustom.textContent = '+ Ketik Sendiri';
+        }
+      }
+
+      // =========================================================================
+      // RENDER UI UTAMA
+      // =========================================================================
+
+      function renderAll() {
+        const activeKey = getActiveMonthKey();
+        const record = appData[activeKey];
+        const summary = calculateMonthSummary(record);
+
+        // 1. Update label bulan aktif
+        const monthLabel = formatMonthKeyLabel(activeKey);
+        elActiveMonthLabel.textContent = monthLabel;
+
+        // 2. Hitung akumulasi seluruh bulan (Total Sisa Uang & Total Tabungan)
+        let totalAllRemaining = 0;
+        let totalAllSavings = 0;
+        let activeMonthsCount = 0;
+
+        Object.keys(appData).forEach((key) => {
+          const s = calculateMonthSummary(appData[key]);
+          if (s.hasActivity) {
+            totalAllRemaining += s.remaining;
+            totalAllSavings += s.savings;
+            activeMonthsCount++;
+          }
+        });
+
+        elStatAllRemaining.textContent = formatRupiah(totalAllRemaining);
+        elStatAllRemaining.className = `text-2xl sm:text-3xl font-extrabold tracking-tight mt-1.5 tabular-nums ${
+          totalAllRemaining < 0 ? 'text-rose-300' : 'text-white'
+        }`;
+        elStatAllSavings.textContent = formatRupiah(totalAllSavings);
+        elRecordedMonthsBadge.textContent = `${activeMonthsCount} bulan tercatat`;
+
+        // 3. Update Kartu Ringkasan Bulan Ini
+        elStatMonthIncome.textContent = formatRupiah(summary.income);
+        elStatMonthSavings.textContent = formatRupiah(summary.savings);
+        elStatMonthExpense.textContent = formatRupiah(summary.expense);
+        elStatMonthRemaining.textContent = formatRupiah(summary.remaining);
+
+        // Warna & status kesehatan keuangan bulan ini
+        if (!summary.hasActivity) {
+          elMonthHealthBadge.textContent = 'Belum ada catatan';
+          elMonthHealthBadge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600';
+          elCardMonthRemaining.className = 'bg-white rounded-2xl p-4 sm:p-5 border-2 border-slate-200 card-shadow transition-colors';
+          elStatMonthRemaining.className = 'text-lg sm:text-xl font-extrabold text-slate-900 tabular-nums truncate';
+        } else if (summary.remaining < 0) {
+          elMonthHealthBadge.textContent = 'Defisit / Minus';
+          elMonthHealthBadge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-700';
+          elCardMonthRemaining.className = 'bg-rose-50/40 rounded-2xl p-4 sm:p-5 border-2 border-rose-200 card-shadow transition-colors';
+          elStatMonthRemaining.className = 'text-lg sm:text-xl font-extrabold text-rose-700 tabular-nums truncate';
+        } else {
+          elMonthHealthBadge.textContent = 'Keuangan Sehat';
+          elMonthHealthBadge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700';
+          elCardMonthRemaining.className = 'bg-indigo-50/30 rounded-2xl p-4 sm:p-5 border-2 border-indigo-200 card-shadow transition-colors';
+          elStatMonthRemaining.className = 'text-lg sm:text-xl font-extrabold text-indigo-700 tabular-nums truncate';
+        }
+
+        // 4. Update Progress Bar Alokasi Dana Bulan Ini
+        if (summary.income > 0) {
+          const pctSav = Math.min(100, Math.max(0, Math.round((summary.savings / summary.income) * 100)));
+          const pctExp = Math.min(100, Math.max(0, Math.round((summary.expense / summary.income) * 100)));
+          const pctRem = Math.max(0, 100 - pctSav - pctExp);
+
+          elPctSavings.textContent = `${pctSav}%`;
+          elPctExpense.textContent = `${pctExp}%`;
+          elPctRemaining.textContent = `${summary.remaining < 0 ? 0 : pctRem}%`;
+
+          elBarSavings.style.width = `${pctSav}%`;
+          elBarExpense.style.width = `${pctExp}%`;
+          elBarRemaining.style.width = `${summary.remaining < 0 ? 0 : pctRem}%`;
+        } else {
+          elPctSavings.textContent = '0%';
+          elPctExpense.textContent = '0%';
+          elPctRemaining.textContent = '0%';
+          elBarSavings.style.width = '0%';
+          elBarExpense.style.width = '0%';
+          elBarRemaining.style.width = '0%';
+        }
+
+        // 5. Sinkronkan Form Tabungan Wajib bulan ini
+        elSavingsAmount.value = summary.savings > 0 ? formatNumberInput(summary.savings) : '';
+        elSavingsNote.value = record?.savingsNote || '';
+
+        // 6. Render Daftar Pemasukan Bulan Ini
+        renderIncomeList(record?.incomes || []);
+
+        // 7. Render Daftar Pengeluaran Bulan Ini
+        renderExpenseList(record?.expenses || []);
+
+        // 8. Render Tabel Rekap Per Bulan
+        renderMonthlyRecapTable();
+      }
+
+      /**
+       * Merender daftar pemasukan bulan aktif
+       */
+      function renderIncomeList(incomes) {
+        if (!incomes.length) {
+          elListIncome.innerHTML = `
+            <li class="text-xs text-slate-400 text-center py-4 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+              Belum ada pemasukan dicatat bulan ini.
+            </li>
+          `;
+          return;
+        }
+
+        elListIncome.innerHTML = incomes
+          .map(
+            (item) => `
+            <li class="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 transition group">
+              <div class="min-w-0">
+                <p class="text-sm font-semibold text-slate-800 truncate">${escapeHTML(item.source)}</p>
+              </div>
+              <div class="flex items-center gap-2.5 shrink-0">
+                <span class="text-sm font-bold text-blue-700 tabular-nums">${formatRupiah(item.amount)}</span>
+                <button
+                  type="button"
+                  data-delete-income="${item.id}"
+                  aria-label="Hapus pemasukan"
+                  class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+          `
+          )
+          .join('');
+      }
+
+      /**
+       * Merender daftar pengeluaran bulan aktif
+       */
+      function renderExpenseList(expenses) {
+        elExpenseCountBadge.textContent = `${expenses.length} item`;
+
+        if (!expenses.length) {
+          elListExpense.innerHTML = `
+            <li class="text-xs text-slate-400 text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+              Belum ada pengeluaran dicatat untuk bulan ini.<br/>
+              Pilih jenis pengeluaran dari dropdown atau tulis sendiri di atas.
+            </li>
+          `;
+          return;
+        }
+
+        elListExpense.innerHTML = expenses
+          .map(
+            (item) => `
+            <li class="flex items-center justify-between gap-3 p-3.5 rounded-xl border border-slate-100 bg-white hover:border-slate-200 transition">
+              <div class="min-w-0">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+                  <p class="text-sm font-semibold text-slate-800 truncate">${escapeHTML(item.category)}</p>
+                  ${
+                    item.isCustom
+                      ? '<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 shrink-0">Custom</span>'
+                      : ''
+                  }
+                </div>
+                ${
+                  item.note
+                    ? `<p class="text-xs text-slate-500 mt-0.5 pl-4 truncate">${escapeHTML(item.note)}</p>`
+                    : ''
+                }
+              </div>
+              <div class="flex items-center gap-2.5 shrink-0">
+                <span class="text-sm font-bold text-amber-700 tabular-nums">${formatRupiah(item.amount)}</span>
+                <button
+                  type="button"
+                  data-delete-expense="${item.id}"
+                  aria-label="Hapus pengeluaran"
+                  class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+          `
+          )
+          .join('');
+      }
+
+      /**
+       * Merender tabel ringkasan seluruh bulan yang pernah tercatat
+       */
+      function renderMonthlyRecapTable() {
+        const activeKey = getActiveMonthKey();
+        const keys = Object.keys(appData)
+          .filter((k) => calculateMonthSummary(appData[k]).hasActivity)
+          .sort((a, b) => b.localeCompare(a)); // Urutkan dari bulan terbaru
+
+        if (!keys.length) {
+          elMonthlyRecapBody.innerHTML = `
+            <tr>
+              <td colspan="5" class="py-6 text-center text-xs text-slate-400">
+                Belum ada riwayat bulanan. Mulai catat pemasukan, tabungan wajib, atau pengeluaran di atas.
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        elMonthlyRecapBody.innerHTML = keys
+          .map((key) => {
+            const s = calculateMonthSummary(appData[key]);
+            const isCurrent = key === activeKey;
+            return `
+              <tr
+                data-select-month-key="${key}"
+                class="cursor-pointer transition ${
+                  isCurrent ? 'bg-emerald-50/60 font-semibold' : 'hover:bg-slate-50'
+                }"
+              >
+                <td class="py-3 px-3 text-slate-800 flex items-center gap-2">
+                  <span>${formatMonthKeyLabel(key)}</span>
+                  ${
+                    isCurrent
+                      ? '<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-600 text-white">Aktif</span>'
+                      : ''
+                  }
+                </td>
+                <td class="py-3 px-3 text-right text-blue-700 tabular-nums">${formatRupiah(s.income)}</td>
+                <td class="py-3 px-3 text-right text-emerald-700 tabular-nums">${formatRupiah(s.savings)}</td>
+                <td class="py-3 px-3 text-right text-amber-700 tabular-nums">${formatRupiah(s.expense)}</td>
+                <td class="py-3 px-3 text-right font-bold tabular-nums ${
+                  s.remaining < 0 ? 'text-rose-600' : 'text-slate-900'
+                }">${formatRupiah(s.remaining)}</td>
+              </tr>
+            `;
+          })
+          .join('');
+      }
+
+      // =========================================================================
+      // EVENT HANDLERS
+      // =========================================================================
+
+      // Formatting otomatis titik ribuan pada semua input nominal Rupiah
+      document.querySelectorAll('.currency-input').forEach((input) => {
+        input.addEventListener('input', (e) => {
+          e.target.value = formatNumberInput(e.target.value);
+        });
+      });
+
+      // Navigasi Bulan
+      function changeMonthByOffset(offset) {
+        const y = parseInt(currentYear, 10);
+        const m = parseInt(currentMonth, 10) - 1 + offset;
+        const targetDate = new Date(y, m, 1);
+        currentYear = String(targetDate.getFullYear());
+        currentMonth = String(targetDate.getMonth() + 1).padStart(2, '0');
+
+        // Pastikan tahun ada di dropdown
+        if (![...elSelectYear.options].some((o) => o.value === currentYear)) {
+          const opt = document.createElement('option');
+          opt.value = currentYear;
+          opt.textContent = currentYear;
+          elSelectYear.appendChild(opt);
+        }
+
+        elSelectMonth.value = currentMonth;
+        elSelectYear.value = currentYear;
+        renderAll();
+      }
+
+      elBtnPrevMonth.addEventListener('click', () => changeMonthByOffset(-1));
+      elBtnNextMonth.addEventListener('click', () => changeMonthByOffset(1));
+
+      elSelectMonth.addEventListener('change', (e) => {
+        currentMonth = e.target.value;
+        renderAll();
+      });
+
+      elSelectYear.addEventListener('change', (e) => {
+        currentYear = e.target.value;
+        renderAll();
+      });
+
+      // Submit Form Pemasukan
+      elFormIncome.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const source = elIncomeSource.value.trim();
+        const amount = parseCurrencyInput(elIncomeAmount.value);
+
+        if (!source || amount <= 0) {
+          showToast('Isi sumber dan nominal pemasukan dengan benar.', 'warning');
+          return;
+        }
+
+        const record = ensureMonthRecord(getActiveMonthKey());
+        record.incomes.push({
+          id: generateId(),
+          source,
+          amount
+        });
+
+        saveToStorage();
+        elIncomeSource.value = '';
+        elIncomeAmount.value = '';
+        renderAll();
+        showToast(`Pemasukan "${source}" ditambahkan.`);
+      });
+
+      // Hapus item pemasukan (Event delegation)
+      elListIncome.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-delete-income]');
+        if (!btn) return;
+        const id = btn.getAttribute('data-delete-income');
+        const record = ensureMonthRecord(getActiveMonthKey());
+        record.incomes = record.incomes.filter((item) => item.id !== id);
+        saveToStorage();
+        renderAll();
+        showToast('Pemasukan dihapus.');
+      });
+
+      // Submit Form Tabungan Wajib
+      elFormSavings.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const amount = parseCurrencyInput(elSavingsAmount.value);
+        const note = elSavingsNote.value.trim();
+
+        const record = ensureMonthRecord(getActiveMonthKey());
+        record.mandatorySavings = amount;
+        record.savingsNote = note;
+
+        saveToStorage();
+        renderAll();
+        showToast('Tabungan wajib bulan ini berhasil disimpan.');
+      });
+
+      // Dropdown & Toggle Input Custom Pengeluaran
+      elExpenseSelect.addEventListener('change', handleExpenseSelectChange);
+
+      elBtnToggleCustom.addEventListener('click', () => {
+        if (elExpenseSelect.value === CUSTOM_OPTION_VALUE) {
+          elExpenseSelect.value = DEFAULT_EXPENSE_CATEGORIES[0];
+          handleExpenseSelectChange();
+        } else {
+          elExpenseSelect.value = CUSTOM_OPTION_VALUE;
+          handleExpenseSelectChange();
+          elExpenseCustomName.focus();
+        }
+      });
+
+      // Submit Form Pengeluaran
+      elFormExpense.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const isCustom = elExpenseSelect.value === CUSTOM_OPTION_VALUE;
+        const categoryName = isCustom
+          ? elExpenseCustomName.value.trim()
+          : elExpenseSelect.value;
+        const amount = parseCurrencyInput(elExpenseAmount.value);
+        const note = elExpenseNote.value.trim();
+
+        if (!categoryName) {
+          showToast('Tulis nama jenis pengeluaran terlebih dahulu.', 'warning');
+          elExpenseCustomName.focus();
+          return;
+        }
+        if (amount <= 0) {
+          showToast('Masukkan nominal pengeluaran lebih dari 0.', 'warning');
+          elExpenseAmount.focus();
+          return;
+        }
+
+        // Simpan kategori custom ke dropdown jika dicentang
+        if (isCustom && elSaveCustomCat.checked) {
+          const existsInDefault = DEFAULT_EXPENSE_CATEGORIES.some(
+            (c) => c.toLowerCase() === categoryName.toLowerCase()
+          );
+          const existsInCustom = customCategories.some(
+            (c) => c.toLowerCase() === categoryName.toLowerCase()
+          );
+          if (!existsInDefault && !existsInCustom) {
+            customCategories.push(categoryName);
+            renderExpenseCategoryDropdown(categoryName);
+          }
+        }
+
+        const record = ensureMonthRecord(getActiveMonthKey());
+        record.expenses.unshift({
+          id: generateId(),
+          category: categoryName,
+          amount,
+          note,
+          isCustom
+        });
+
+        saveToStorage();
+
+        // Reset input form pengeluaran
+        elExpenseCustomName.value = '';
+        elExpenseAmount.value = '';
+        elExpenseNote.value = '';
+        if (isCustom && !elSaveCustomCat.checked) {
+          elExpenseSelect.value = DEFAULT_EXPENSE_CATEGORIES[0];
+          handleExpenseSelectChange();
+        }
+
+        renderAll();
+        showToast(`Pengeluaran "${categoryName}" dicatat.`);
+      });
+
+      // Hapus item pengeluaran (Event delegation)
+      elListExpense.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-delete-expense]');
+        if (!btn) return;
+        const id = btn.getAttribute('data-delete-expense');
+        const record = ensureMonthRecord(getActiveMonthKey());
+        record.expenses = record.expenses.filter((item) => item.id !== id);
+        saveToStorage();
+        renderAll();
+        showToast('Pengeluaran dihapus.');
+      });
+
+      // Klik baris pada tabel Rekap Per Bulan untuk berpindah bulan
+      elMonthlyRecapBody.addEventListener('click', (e) => {
+        const row = e.target.closest('[data-select-month-key]');
+        if (!row) return;
+        const key = row.getAttribute('data-select-month-key');
+        const [y, m] = key.split('-');
+        currentYear = y;
+        currentMonth = m;
+        elSelectYear.value = currentYear;
+        elSelectMonth.value = currentMonth;
+        renderAll();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // =========================================================================
+      // FITUR CONTOH DATA & RESET DATA
+      // =========================================================================
+
+      async function handleLoadSampleData() {
+        const confirmed = await showConfirmDialog({
+          title: 'Isi Contoh Data Keluarga?',
+          message:
+            'Fitur ini akan mengisi contoh catatan keuangan untuk bulan ini dan bulan lalu agar Anda bisa melihat simulasi perhitungan sisa uang & total tabungan.',
+          confirmText: 'Ya, Isi Contoh',
+          isDanger: false
+        });
+        if (!confirmed) return;
+
+        // Bulan ini
+        const thisKey = getActiveMonthKey();
+        // Bulan lalu
+        const prevDate = new Date(parseInt(currentYear, 10), parseInt(currentMonth, 10) - 2, 1);
+        const prevKey = `${prevDate.getFullYear()}-${String(prevDate.getMonth() + 1).padStart(2, '0')}`;
+
+        appData[prevKey] = {
+          incomes: [
+            { id: generateId(), source: 'Gaji Suami', amount: 7500000 },
+            { id: generateId(), source: 'Gaji Istri', amount: 4500000 }
+          ],
+          mandatorySavings: 2000000,
+          savingsNote: 'Rekening Tabungan Masa Depan',
+          expenses: [
+            { id: generateId(), category: 'Belanja Bulanan & Dapur', amount: 2800000, note: 'Sembako & sayur', isCustom: false },
+            { id: generateId(), category: 'Cicilan / Kontrakan Rumah', amount: 2500000, note: 'KPR Bulanan', isCustom: false },
+            { id: generateId(), category: 'Listrik, Air & Internet', amount: 950000, note: 'Token PLN & WiFi', isCustom: false },
+            { id: generateId(), category: 'Susu & Popok Anak', amount: 650000, note: 'Stok 1 bulan', isCustom: true }
+          ]
+        };
+
+        appData[thisKey] = {
+          incomes: [
+            { id: generateId(), source: 'Gaji Suami', amount: 7500000 },
+            { id: generateId(), source: 'Gaji Istri', amount: 4500000 },
+            { id: generateId(), source: 'Bonus Lembur', amount: 1000000 }
+          ],
+          mandatorySavings: 2500000,
+          savingsNote: 'Dana Darurat & Pendidikan',
+          expenses: [
+            { id: generateId(), category: 'Belanja Bulanan & Dapur', amount: 3000000, note: 'Belanja awal bulan', isCustom: false },
+            { id: generateId(), category: 'Cicilan / Kontrakan Rumah', amount: 2500000, note: 'KPR Bulanan', isCustom: false },
+            { id: generateId(), category: 'Listrik, Air & Internet', amount: 900000, note: '', isCustom: false },
+            { id: generateId(), category: 'Pendidikan & Sekolah Anak', amount: 1200000, note: 'SPP & les', isCustom: false },
+            { id: generateId(), category: 'Transportasi & Bensin', amount: 750000, note: '', isCustom: false }
+          ]
+        };
+
+        saveToStorage();
+        renderAll();
+        showToast('Contoh data 2 bulan berhasil dimuat.');
+      }
+
+      async function handleResetAllData() {
+        const confirmed = await showConfirmDialog({
+          title: 'Hapus Semua Data?',
+          message:
+            'Semua catatan pemasukan, tabungan wajib, dan pengeluaran di seluruh bulan akan dihapus permanen. Lanjutkan?',
+          confirmText: 'Ya, Hapus Semua',
+          isDanger: true
+        });
+        if (!confirmed) return;
+
+        appData = {};
+        customCategories = [];
+        saveToStorage();
+        renderExpenseCategoryDropdown();
+        renderAll();
+        showToast('Semua data keuangan telah dihapus.');
+      }
+
+      document.getElementById('btn-sample-desktop').addEventListener('click', handleLoadSampleData);
+      document.getElementById('btn-sample-mobile').addEventListener('click', handleLoadSampleData);
+      document.getElementById('btn-reset-desktop').addEventListener('click', handleResetAllData);
+      document.getElementById('btn-reset-mobile').addEventListener('click', handleResetAllData);
+
+      // =========================================================================
+      // INISIALISASI SAAT HALAMAN DIMUAT
+      // =========================================================================
+      loadFromStorage();
+      initYearSelector();
+      renderExpenseCategoryDropdown();
+      renderAll();
+    })();
+  </script>
+</body>
+</html>
