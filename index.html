@@ -2,48 +2,51 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dompet Keluarga — Keuangan Bulanan Simpel</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+  <meta name="theme-color" content="#059669" />
+  <meta name="color-scheme" content="light" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Dompet Keluarga Arroyan</title>
+  <!-- CSS sudah ditanam di sini (hasil kompilasi Tailwind), jadi aplikasi jalan 100% offline -->
+  <style id="tailwind-css">@layer properties;@layer theme,base,components,utilities;@layer theme{:root,:host{--font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--color-amber-50: rgb(255 251 235);--color-amber-300: rgb(255 210 48);--color-amber-500: rgb(254 154 0);--color-amber-600: rgb(225 113 0);--color-amber-700: rgb(187 77 0);--color-amber-800: rgb(151 60 0);--color-emerald-50: rgb(236 253 245);--color-emerald-100: rgb(208 250 229);--color-emerald-300: rgb(94 233 181);--color-emerald-400: rgb(0 212 146);--color-emerald-500: rgb(0 188 125);--color-emerald-600: rgb(0 153 102);--color-emerald-700: rgb(0 122 85);--color-teal-700: rgb(0 120 111);--color-blue-50: rgb(239 246 255);--color-blue-500: rgb(43 127 255);--color-blue-600: rgb(21 93 252);--color-blue-700: rgb(20 71 230);--color-indigo-50: rgb(238 242 255);--color-indigo-200: rgb(198 210 255);--color-indigo-500: rgb(97 95 255);--color-indigo-600: rgb(79 57 246);--color-indigo-700: rgb(67 45 215);--color-rose-50: rgb(255 241 242);--color-rose-100: rgb(255 228 230);--color-rose-200: rgb(255 204 211);--color-rose-300: rgb(255 161 173);--color-rose-600: rgb(236 0 63);--color-rose-700: rgb(199 0 54);--color-slate-50: rgb(248 250 252);--color-slate-100: rgb(241 245 249);--color-slate-200: rgb(226 232 240);--color-slate-300: rgb(202 213 226);--color-slate-400: rgb(144 161 185);--color-slate-500: rgb(98 116 142);--color-slate-600: rgb(69 85 108);--color-slate-700: rgb(49 65 88);--color-slate-800: rgb(29 41 61);--color-slate-900: rgb(15 23 43);--color-white: #fff;--spacing: .25rem;--container-sm: 24rem;--container-md: 28rem;--container-6xl: 72rem;--text-xs: .75rem;--text-xs--line-height: calc(1 / .75);--text-sm: .875rem;--text-sm--line-height: calc(1.25 / .875);--text-base: 1rem;--text-base--line-height: 1.5 ;--text-lg: 1.125rem;--text-lg--line-height: calc(1.75 / 1.125);--text-xl: 1.25rem;--text-xl--line-height: calc(1.75 / 1.25);--text-2xl: 1.5rem;--text-2xl--line-height: calc(2 / 1.5);--text-3xl: 1.875rem;--text-3xl--line-height: 1.2 ;--font-weight-medium: 500;--font-weight-semibold: 600;--font-weight-bold: 700;--font-weight-extrabold: 800;--tracking-tight: -.025em;--tracking-wide: .025em;--tracking-wider: .05em;--leading-tight: 1.25;--leading-snug: 1.375;--leading-relaxed: 1.625;--radius-lg: .5rem;--radius-xl: .75rem;--radius-2xl: 1rem;--blur-sm: 8px;--default-transition-duration: .15s;--default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);--default-font-family: var(--font-sans);--default-mono-font-family: var(--font-mono)}}@layer base{*,:after,:before,::backdrop,::file-selector-button{box-sizing:border-box;margin:0;padding:0;border:0 solid}html,:host{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings, normal);font-variation-settings:var(--default-font-variation-settings, normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings, normal);font-variation-settings:var(--default-mono-font-variation-settings, normal);font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring:where(:not(iframe)){outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea,::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;border-radius:0;background-color:transparent;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px){::placeholder{color:currentcolor}@supports (color: color-mix(in lab,red,red)){::placeholder{color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]),::file-selector-button{-webkit-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer utilities{.pointer-events-auto{pointer-events:auto}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.fixed{position:fixed}.relative{position:relative}.inset-0{top:0;right:0;bottom:0;left:0}.top-1\/2{top:50%}.right-5{right:calc(var(--spacing) * 5)}.bottom-5{bottom:calc(var(--spacing) * 5)}.left-3\.5{left:calc(var(--spacing) * 3.5)}.z-10{z-index:10}.z-30{z-index:30}.z-50{z-index:50}.z-\[60\]{z-index:60}.container{width:100%}@media(min-width:40rem){.container{max-width:40rem}}@media(min-width:48rem){.container{max-width:48rem}}@media(min-width:64rem){.container{max-width:64rem}}@media(min-width:80rem){.container{max-width:80rem}}@media(min-width:96rem){.container{max-width:96rem}}.mx-auto{margin-inline:auto}.mt-0\.5{margin-top:calc(var(--spacing) * .5)}.mt-1\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-4{margin-top:calc(var(--spacing) * 4)}.mt-5{margin-top:calc(var(--spacing) * 5)}.mb-1{margin-bottom:var(--spacing)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-2\.5{margin-bottom:calc(var(--spacing) * 2.5)}.mb-3{margin-bottom:calc(var(--spacing) * 3)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-flex{display:inline-flex}.table{display:table}.h-2{height:calc(var(--spacing) * 2)}.h-2\.5{height:calc(var(--spacing) * 2.5)}.h-3{height:calc(var(--spacing) * 3)}.h-4{height:calc(var(--spacing) * 4)}.h-5{height:calc(var(--spacing) * 5)}.h-6{height:calc(var(--spacing) * 6)}.h-7{height:calc(var(--spacing) * 7)}.h-10{height:calc(var(--spacing) * 10)}.h-11{height:calc(var(--spacing) * 11)}.h-full{height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-\[44px\]{min-height:44px}.min-h-\[48px\]{min-height:48px}.min-h-screen{min-height:100vh}.w-2{width:calc(var(--spacing) * 2)}.w-2\.5{width:calc(var(--spacing) * 2.5)}.w-4{width:calc(var(--spacing) * 4)}.w-5{width:calc(var(--spacing) * 5)}.w-6{width:calc(var(--spacing) * 6)}.w-7{width:calc(var(--spacing) * 7)}.w-10{width:calc(var(--spacing) * 10)}.w-11{width:calc(var(--spacing) * 11)}.w-\[calc\(100\%-2\.5rem\)\]{width:calc(100% - 2.5rem)}.w-full{width:100%}.max-w-6xl{max-width:var(--container-6xl)}.max-w-md{max-width:var(--container-md)}.max-w-sm{max-width:var(--container-sm)}.min-w-0{min-width:0px}.min-w-\[600px\]{min-width:600px}.flex-1{flex:1}.shrink-0{flex-shrink:0}.border-collapse{border-collapse:collapse}.-translate-y-1\/2{--tw-translate-y: -50% ;translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-y-2{--tw-translate-y: calc(var(--spacing) * 2);translate:var(--tw-translate-x) var(--tw-translate-y)}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.items-end{align-items:flex-end}.items-start{align-items:flex-start}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}.gap-1\.5{gap:calc(var(--spacing) * 1.5)}.gap-2{gap:calc(var(--spacing) * 2)}.gap-2\.5{gap:calc(var(--spacing) * 2.5)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}.gap-6{gap:calc(var(--spacing) * 6)}:where(.space-y-2>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start:calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-2\.5>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start:calc(calc(var(--spacing) * 2.5) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 2.5) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-3>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start:calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-3\.5>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start:calc(calc(var(--spacing) * 3.5) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 3.5) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-6>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start:calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)))}:where(.divide-y>:not(:last-child)){--tw-divide-y-reverse: 0;border-bottom-style:var(--tw-border-style);border-top-style:var(--tw-border-style);border-top-width:calc(1px * var(--tw-divide-y-reverse));border-bottom-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)))}:where(.divide-slate-100>:not(:last-child)){border-color:var(--color-slate-100)}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:var(--radius-2xl)}.rounded-full{border-radius:calc(infinity * 1px)}.rounded-lg{border-radius:var(--radius-lg)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-2{border-style:var(--tw-border-style);border-width:2px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-t-2{border-top-style:var(--tw-border-style);border-top-width:2px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-dashed{--tw-border-style: dashed;border-style:dashed}.border-amber-300{border-color:var(--color-amber-300)}.border-emerald-300{border-color:var(--color-emerald-300)}.border-indigo-200{border-color:var(--color-indigo-200)}.border-rose-200{border-color:var(--color-rose-200)}.border-slate-100{border-color:var(--color-slate-100)}.border-slate-200{border-color:var(--color-slate-200)}.border-slate-200\/60{border-color:#e2e8f099}@supports (color: color-mix(in lab,red,red)){.border-slate-200\/60{border-color:color-mix(in oklab,var(--color-slate-200) 60%,transparent)}}.border-slate-200\/80{border-color:#e2e8f0cc}@supports (color: color-mix(in lab,red,red)){.border-slate-200\/80{border-color:color-mix(in oklab,var(--color-slate-200) 80%,transparent)}}.border-slate-300{border-color:var(--color-slate-300)}.bg-amber-50{background-color:var(--color-amber-50)}.bg-amber-500{background-color:var(--color-amber-500)}.bg-amber-600{background-color:var(--color-amber-600)}.bg-blue-50{background-color:var(--color-blue-50)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-emerald-50{background-color:var(--color-emerald-50)}.bg-emerald-50\/60{background-color:#ecfdf599}@supports (color: color-mix(in lab,red,red)){.bg-emerald-50\/60{background-color:color-mix(in oklab,var(--color-emerald-50) 60%,transparent)}}.bg-emerald-100{background-color:var(--color-emerald-100)}.bg-emerald-500{background-color:var(--color-emerald-500)}.bg-emerald-600{background-color:var(--color-emerald-600)}.bg-indigo-50{background-color:var(--color-indigo-50)}.bg-indigo-50\/30{background-color:#eef2ff4d}@supports (color: color-mix(in lab,red,red)){.bg-indigo-50\/30{background-color:color-mix(in oklab,var(--color-indigo-50) 30%,transparent)}}.bg-indigo-500{background-color:var(--color-indigo-500)}.bg-rose-50{background-color:var(--color-rose-50)}.bg-rose-50\/40{background-color:#fff1f266}@supports (color: color-mix(in lab,red,red)){.bg-rose-50\/40{background-color:color-mix(in oklab,var(--color-rose-50) 40%,transparent)}}.bg-rose-100{background-color:var(--color-rose-100)}.bg-rose-600{background-color:var(--color-rose-600)}.bg-slate-50{background-color:var(--color-slate-50)}.bg-slate-50\/80{background-color:#f8fafccc}@supports (color: color-mix(in lab,red,red)){.bg-slate-50\/80{background-color:color-mix(in oklab,var(--color-slate-50) 80%,transparent)}}.bg-slate-100{background-color:var(--color-slate-100)}.bg-slate-200\/70{background-color:#e2e8f0b3}@supports (color: color-mix(in lab,red,red)){.bg-slate-200\/70{background-color:color-mix(in oklab,var(--color-slate-200) 70%,transparent)}}.bg-slate-900{background-color:var(--color-slate-900)}.bg-slate-900\/50{background-color:#0f172b7f}@supports (color: color-mix(in lab,red,red)){.bg-slate-900\/50{background-color:color-mix(in oklab,var(--color-slate-900) 50%,transparent)}}.bg-transparent{background-color:transparent}.bg-white{background-color:var(--color-white)}.bg-white\/10{background-color:color-mix(in srgb,#fff 10%,transparent)}@supports (color: color-mix(in lab,red,red)){.bg-white\/10{background-color:color-mix(in oklab,var(--color-white) 10%,transparent)}}.bg-white\/15{background-color:color-mix(in srgb,#fff 15%,transparent)}@supports (color: color-mix(in lab,red,red)){.bg-white\/15{background-color:color-mix(in oklab,var(--color-white) 15%,transparent)}}.bg-gradient-to-br{--tw-gradient-position: to bottom right;background-image:linear-gradient(var(--tw-gradient-stops))}.from-emerald-600{--tw-gradient-from: var(--color-emerald-600);--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-slate-900{--tw-gradient-from: var(--color-slate-900);--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-slate-800{--tw-gradient-to: var(--color-slate-800);--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-teal-700{--tw-gradient-to: var(--color-teal-700);--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.p-1{padding:var(--spacing)}.p-2\.5{padding:calc(var(--spacing) * 2.5)}.p-3{padding:calc(var(--spacing) * 3)}.p-3\.5{padding:calc(var(--spacing) * 3.5)}.p-4{padding:calc(var(--spacing) * 4)}.p-5{padding:calc(var(--spacing) * 5)}.p-6{padding:calc(var(--spacing) * 6)}.px-1\.5{padding-inline:calc(var(--spacing) * 1.5)}.px-2{padding-inline:calc(var(--spacing) * 2)}.px-2\.5{padding-inline:calc(var(--spacing) * 2.5)}.px-3{padding-inline:calc(var(--spacing) * 3)}.px-3\.5{padding-inline:calc(var(--spacing) * 3.5)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-5{padding-inline:calc(var(--spacing) * 5)}.py-0\.5{padding-block:calc(var(--spacing) * .5)}.py-1{padding-block:var(--spacing)}.py-2{padding-block:calc(var(--spacing) * 2)}.py-2\.5{padding-block:calc(var(--spacing) * 2.5)}.py-3{padding-block:calc(var(--spacing) * 3)}.py-3\.5{padding-block:calc(var(--spacing) * 3.5)}.py-4{padding-block:calc(var(--spacing) * 4)}.py-6{padding-block:calc(var(--spacing) * 6)}.py-8{padding-block:calc(var(--spacing) * 8)}.pt-1{padding-top:var(--spacing)}.pt-4{padding-top:calc(var(--spacing) * 4)}.pr-3\.5{padding-right:calc(var(--spacing) * 3.5)}.pl-4{padding-left:calc(var(--spacing) * 4)}.pl-10{padding-left:calc(var(--spacing) * 10)}.text-center{text-align:center}.text-left{text-align:left}.text-right{text-align:right}.font-sans{font-family:var(--font-sans)}.text-2xl{font-size:var(--text-2xl);line-height:var(--tw-leading, var(--text-2xl--line-height))}.text-base{font-size:var(--text-base);line-height:var(--tw-leading, var(--text-base--line-height))}.text-lg{font-size:var(--text-lg);line-height:var(--tw-leading, var(--text-lg--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading, var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading, var(--text-xs--line-height))}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.leading-relaxed{--tw-leading: var(--leading-relaxed);line-height:var(--leading-relaxed)}.leading-snug{--tw-leading: var(--leading-snug);line-height:var(--leading-snug)}.leading-tight{--tw-leading: var(--leading-tight);line-height:var(--leading-tight)}.font-bold{--tw-font-weight: var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-extrabold{--tw-font-weight: var(--font-weight-extrabold);font-weight:var(--font-weight-extrabold)}.font-medium{--tw-font-weight: var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-semibold{--tw-font-weight: var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-tight{--tw-tracking: var(--tracking-tight);letter-spacing:var(--tracking-tight)}.tracking-wide{--tw-tracking: var(--tracking-wide);letter-spacing:var(--tracking-wide)}.tracking-wider{--tw-tracking: var(--tracking-wider);letter-spacing:var(--tracking-wider)}.break-words{overflow-wrap:break-word}.text-amber-600{color:var(--color-amber-600)}.text-amber-700{color:var(--color-amber-700)}.text-amber-800{color:var(--color-amber-800)}.text-blue-600{color:var(--color-blue-600)}.text-blue-700{color:var(--color-blue-700)}.text-emerald-100{color:var(--color-emerald-100)}.text-emerald-100\/80{color:#d0fae5cc}@supports (color: color-mix(in lab,red,red)){.text-emerald-100\/80{color:color-mix(in oklab,var(--color-emerald-100) 80%,transparent)}}.text-emerald-400{color:var(--color-emerald-400)}.text-emerald-600{color:var(--color-emerald-600)}.text-emerald-700{color:var(--color-emerald-700)}.text-indigo-600{color:var(--color-indigo-600)}.text-indigo-700{color:var(--color-indigo-700)}.text-rose-300{color:var(--color-rose-300)}.text-rose-600{color:var(--color-rose-600)}.text-rose-700{color:var(--color-rose-700)}.text-slate-300{color:var(--color-slate-300)}.text-slate-400{color:var(--color-slate-400)}.text-slate-500{color:var(--color-slate-500)}.text-slate-600{color:var(--color-slate-600)}.text-slate-700{color:var(--color-slate-700)}.text-slate-800{color:var(--color-slate-800)}.text-slate-900{color:var(--color-slate-900)}.text-white{color:var(--color-white)}.uppercase{text-transform:uppercase}.tabular-nums{--tw-numeric-spacing: tabular-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.underline{text-decoration-line:underline}.underline-offset-2{text-underline-offset:2px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-0{opacity:0%}.shadow-lg{--tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / .1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / .1));box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-sm{--tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / .1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / .1));box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-xl{--tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / .1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / .1));box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.backdrop-blur-sm{--tw-backdrop-blur: blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease, var(--default-transition-timing-function));transition-duration:var(--tw-duration, var(--default-transition-duration))}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease, var(--default-transition-timing-function));transition-duration:var(--tw-duration, var(--default-transition-duration))}.transition-colors{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease, var(--default-transition-timing-function));transition-duration:var(--tw-duration, var(--default-transition-duration))}.duration-200{--tw-duration: .2s;transition-duration:.2s}.duration-300{--tw-duration: .3s;transition-duration:.3s}.select-none{-webkit-user-select:none;user-select:none}.file\:mr-3::file-selector-button{margin-right:calc(var(--spacing) * 3)}.file\:rounded-xl::file-selector-button{border-radius:var(--radius-xl)}.file\:border-0::file-selector-button{border-style:var(--tw-border-style);border-width:0px}.file\:bg-slate-100::file-selector-button{background-color:var(--color-slate-100)}.file\:px-4::file-selector-button{padding-inline:calc(var(--spacing) * 4)}.file\:py-2\.5::file-selector-button{padding-block:calc(var(--spacing) * 2.5)}.file\:text-xs::file-selector-button{font-size:var(--text-xs);line-height:var(--tw-leading, var(--text-xs--line-height))}.file\:font-semibold::file-selector-button{--tw-font-weight: var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.file\:text-slate-700::file-selector-button{color:var(--color-slate-700)}@media(hover:hover){.hover\:border-slate-200:hover{border-color:var(--color-slate-200)}.hover\:bg-amber-700:hover{background-color:var(--color-amber-700)}.hover\:bg-blue-700:hover{background-color:var(--color-blue-700)}.hover\:bg-emerald-700:hover{background-color:var(--color-emerald-700)}.hover\:bg-rose-50:hover{background-color:var(--color-rose-50)}.hover\:bg-rose-100:hover{background-color:var(--color-rose-100)}.hover\:bg-rose-700:hover{background-color:var(--color-rose-700)}.hover\:bg-slate-50:hover{background-color:var(--color-slate-50)}.hover\:bg-slate-100:hover{background-color:var(--color-slate-100)}.hover\:bg-slate-100\/80:hover{background-color:#f1f5f9cc}@supports (color: color-mix(in lab,red,red)){.hover\:bg-slate-100\/80:hover{background-color:color-mix(in oklab,var(--color-slate-100) 80%,transparent)}}.hover\:bg-slate-200:hover{background-color:var(--color-slate-200)}.hover\:bg-white:hover{background-color:var(--color-white)}.hover\:text-amber-800:hover{color:var(--color-amber-800)}.hover\:text-rose-600:hover{color:var(--color-rose-600)}.hover\:text-slate-900:hover{color:var(--color-slate-900)}.hover\:shadow-sm:hover{--tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / .1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / .1));box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}}.focus\:border-amber-500:focus{border-color:var(--color-amber-500)}.focus\:border-blue-500:focus{border-color:var(--color-blue-500)}.focus\:border-emerald-500:focus{border-color:var(--color-emerald-500)}.focus\:ring-2:focus{--tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus\:ring-amber-500:focus{--tw-ring-color: var(--color-amber-500)}.focus\:ring-amber-500\/20:focus{--tw-ring-color: rgb(254 154 0 / 20%)}@supports (color: color-mix(in lab,red,red)){.focus\:ring-amber-500\/20:focus{--tw-ring-color: color-mix(in oklab, var(--color-amber-500) 20%, transparent)}}.focus\:ring-amber-500\/25:focus{--tw-ring-color: rgb(254 154 0 / 25%)}@supports (color: color-mix(in lab,red,red)){.focus\:ring-amber-500\/25:focus{--tw-ring-color: color-mix(in oklab, var(--color-amber-500) 25%, transparent)}}.focus\:ring-blue-500\/20:focus{--tw-ring-color: rgb(43 127 255 / 20%)}@supports (color: color-mix(in lab,red,red)){.focus\:ring-blue-500\/20:focus{--tw-ring-color: color-mix(in oklab, var(--color-blue-500) 20%, transparent)}}.focus\:ring-emerald-500\/20:focus{--tw-ring-color: rgb(0 188 125 / 20%)}@supports (color: color-mix(in lab,red,red)){.focus\:ring-emerald-500\/20:focus{--tw-ring-color: color-mix(in oklab, var(--color-emerald-500) 20%, transparent)}}.focus\:outline-none:focus{--tw-outline-style: none;outline-style:none}.active\:scale-\[0\.99\]:active{scale:.99}.active\:bg-slate-100:active{background-color:var(--color-slate-100)}@media(min-width:40rem){.sm\:sticky{position:sticky}.sm\:top-0{top:0}.sm\:col-span-2{grid-column:span 2 / span 2}.sm\:block{display:block}.sm\:flex{display:flex}.sm\:hidden{display:none}.sm\:w-auto{width:auto}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:justify-between{justify-content:space-between}.sm\:justify-end{justify-content:flex-end}.sm\:gap-4{gap:calc(var(--spacing) * 4)}.sm\:p-5{padding:calc(var(--spacing) * 5)}.sm\:px-6{padding-inline:calc(var(--spacing) * 6)}.sm\:text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading, var(--text-3xl--line-height))}.sm\:text-lg{font-size:var(--text-lg);line-height:var(--tw-leading, var(--text-lg--line-height))}.sm\:text-sm{font-size:var(--text-sm);line-height:var(--tw-leading, var(--text-sm--line-height))}.sm\:text-xl{font-size:var(--text-xl);line-height:var(--tw-leading, var(--text-xl--line-height))}}@media(min-width:64rem){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.lg\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}}}@property --tw-translate-x{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-y{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-z{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-rotate-x{syntax: "*"; inherits: false;}@property --tw-rotate-y{syntax: "*"; inherits: false;}@property --tw-rotate-z{syntax: "*"; inherits: false;}@property --tw-skew-x{syntax: "*"; inherits: false;}@property --tw-skew-y{syntax: "*"; inherits: false;}@property --tw-space-y-reverse{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-divide-y-reverse{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-border-style{syntax: "*"; inherits: false; initial-value: solid;}@property --tw-gradient-position{syntax: "*"; inherits: false;}@property --tw-gradient-from{syntax: "<color>"; inherits: false; initial-value: #0000;}@property --tw-gradient-via{syntax: "<color>"; inherits: false; initial-value: #0000;}@property --tw-gradient-to{syntax: "<color>"; inherits: false; initial-value: #0000;}@property --tw-gradient-stops{syntax: "*"; inherits: false;}@property --tw-gradient-via-stops{syntax: "*"; inherits: false;}@property --tw-gradient-from-position{syntax: "<length-percentage>"; inherits: false; initial-value: 0%;}@property --tw-gradient-via-position{syntax: "<length-percentage>"; inherits: false; initial-value: 50%;}@property --tw-gradient-to-position{syntax: "<length-percentage>"; inherits: false; initial-value: 100%;}@property --tw-leading{syntax: "*"; inherits: false;}@property --tw-font-weight{syntax: "*"; inherits: false;}@property --tw-tracking{syntax: "*"; inherits: false;}@property --tw-ordinal{syntax: "*"; inherits: false;}@property --tw-slashed-zero{syntax: "*"; inherits: false;}@property --tw-numeric-figure{syntax: "*"; inherits: false;}@property --tw-numeric-spacing{syntax: "*"; inherits: false;}@property --tw-numeric-fraction{syntax: "*"; inherits: false;}@property --tw-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-shadow-color{syntax: "*"; inherits: false;}@property --tw-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-inset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-shadow-color{syntax: "*"; inherits: false;}@property --tw-inset-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-ring-color{syntax: "*"; inherits: false;}@property --tw-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-ring-color{syntax: "*"; inherits: false;}@property --tw-inset-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-ring-inset{syntax: "*"; inherits: false;}@property --tw-ring-offset-width{syntax: "<length>"; inherits: false; initial-value: 0px;}@property --tw-ring-offset-color{syntax: "*"; inherits: false; initial-value: #fff;}@property --tw-ring-offset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-backdrop-blur{syntax: "*"; inherits: false;}@property --tw-backdrop-brightness{syntax: "*"; inherits: false;}@property --tw-backdrop-contrast{syntax: "*"; inherits: false;}@property --tw-backdrop-grayscale{syntax: "*"; inherits: false;}@property --tw-backdrop-hue-rotate{syntax: "*"; inherits: false;}@property --tw-backdrop-invert{syntax: "*"; inherits: false;}@property --tw-backdrop-opacity{syntax: "*"; inherits: false;}@property --tw-backdrop-saturate{syntax: "*"; inherits: false;}@property --tw-backdrop-sepia{syntax: "*"; inherits: false;}@property --tw-duration{syntax: "*"; inherits: false;}@layer properties{@supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x: 0;--tw-translate-y: 0;--tw-translate-z: 0;--tw-rotate-x: initial;--tw-rotate-y: initial;--tw-rotate-z: initial;--tw-skew-x: initial;--tw-skew-y: initial;--tw-space-y-reverse: 0;--tw-divide-y-reverse: 0;--tw-border-style: solid;--tw-gradient-position: initial;--tw-gradient-from: #0000;--tw-gradient-via: #0000;--tw-gradient-to: #0000;--tw-gradient-stops: initial;--tw-gradient-via-stops: initial;--tw-gradient-from-position: 0%;--tw-gradient-via-position: 50%;--tw-gradient-to-position: 100%;--tw-leading: initial;--tw-font-weight: initial;--tw-tracking: initial;--tw-ordinal: initial;--tw-slashed-zero: initial;--tw-numeric-figure: initial;--tw-numeric-spacing: initial;--tw-numeric-fraction: initial;--tw-shadow: 0 0 #0000;--tw-shadow-color: initial;--tw-shadow-alpha: 100%;--tw-inset-shadow: 0 0 #0000;--tw-inset-shadow-color: initial;--tw-inset-shadow-alpha: 100%;--tw-ring-color: initial;--tw-ring-shadow: 0 0 #0000;--tw-inset-ring-color: initial;--tw-inset-ring-shadow: 0 0 #0000;--tw-ring-inset: initial;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-offset-shadow: 0 0 #0000;--tw-backdrop-blur: initial;--tw-backdrop-brightness: initial;--tw-backdrop-contrast: initial;--tw-backdrop-grayscale: initial;--tw-backdrop-hue-rotate: initial;--tw-backdrop-invert: initial;--tw-backdrop-opacity: initial;--tw-backdrop-saturate: initial;--tw-backdrop-sepia: initial;--tw-duration: initial}}}
+</style>
   <style>
-    /* Pengaturan scrollbar halus dan transisi antarmuka */
+    /* ---- Penyesuaian untuk WebView Android ---- */
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Inter', system-ui, sans-serif;
       background-color: #f8fafc;
       color: #0f172a;
       -webkit-tap-highlight-color: transparent;
+      overscroll-behavior-y: none;            /* cegah tarik-ke-bawah me-refresh halaman */
+      -webkit-user-select: none;
+      user-select: none;                      /* teks antarmuka tidak ikut terblok saat disentuh lama */
+      -webkit-touch-callout: none;
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      padding-bottom: env(safe-area-inset-bottom);
     }
+    input, textarea, select {
+      -webkit-user-select: text;
+      user-select: text;
+    }
+    button, select, summary, [role="button"], label {
+      touch-action: manipulation;             /* hilangkan jeda 300ms saat ketuk */
+    }
+    .app-header { padding-top: env(safe-area-inset-top); }
     .card-shadow {
       box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
     }
-    .tabular-nums {
-      font-variant-numeric: tabular-nums;
-    }
+    #toast-container { bottom: calc(1.25rem + env(safe-area-inset-bottom)); }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-emerald-100 selection:text-emerald-900">
+<body class="min-h-screen flex flex-col antialiased font-sans">
 
   <!-- Toast Notification Container (Pengganti alert) -->
   <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none max-w-sm w-[calc(100%-2.5rem)]"></div>
 
   <!-- Modal Konfirmasi Custom (Pengganti confirm) -->
-  <div id="confirm-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4">
+  <div id="confirm-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 transform transition-all">
       <div class="flex items-center gap-3 mb-3">
         <div id="confirm-icon-wrap" class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
@@ -55,55 +58,73 @@
       </div>
       <p id="confirm-message" class="text-sm text-slate-600 leading-relaxed mb-6">Apakah Anda yakin ingin melanjutkan?</p>
       <div class="flex items-center justify-end gap-3">
-        <button id="confirm-cancel-btn" type="button" class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">
+        <button id="confirm-cancel-btn" type="button" class="px-5 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">
           Batal
         </button>
-        <button id="confirm-ok-btn" type="button" class="px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 transition">
+        <button id="confirm-ok-btn" type="button" class="px-5 py-3 rounded-xl text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 transition">
           Ya, Lanjutkan
         </button>
       </div>
     </div>
   </div>
 
+  <!-- Modal Pulihkan Data -->
+  <div id="restore-modal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-xl border border-slate-100 max-h-[90vh] overflow-y-auto">
+      <h3 class="text-lg font-bold text-slate-900 mb-1">Pulihkan Data</h3>
+      <p class="text-sm text-slate-600 leading-relaxed mb-4">
+        Pilih file cadangan (.json), atau tempel teks cadangan di kolom bawah.
+      </p>
+      <input
+        id="restore-file"
+        type="file"
+        accept=".json,application/json,text/plain"
+        class="block w-full text-xs text-slate-600 mb-3 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700"
+      />
+      <textarea
+        id="restore-text"
+        rows="5"
+        autocomplete="off"
+        placeholder="Atau tempel teks cadangan di sini..."
+        class="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition"
+      ></textarea>
+      <div class="flex items-center justify-end gap-3 mt-4">
+        <button id="restore-cancel-btn" type="button" class="px-5 py-3 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">Batal</button>
+        <button id="restore-ok-btn" type="button" class="px-5 py-3 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition">Pulihkan</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Header & Navigasi Bulan -->
-  <header class="bg-white border-b border-slate-200/80 sticky top-0 z-30">
+  <header class="app-header bg-white border-b border-slate-200/80 sm:sticky sm:top-0 z-30">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
       <!-- Brand / Judul Aplikasi -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-xs">
+          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-sm">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
             </svg>
           </div>
           <div>
-            <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Dompet Keluarga
+            <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Dompet Keluarga Arroyan</h1>
             <p class="text-xs text-slate-500">Catatan Keuangan Bulanan</p>
           </div>
         </div>
 
-        <!-- Tombol Menu Cepat di Mobile -->
-        <div class="flex sm:hidden items-center gap-1.5">
-          <button id="btn-sample-mobile" type="button" title="Isi Contoh Data" class="p-2 rounded-xl text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
-            Contoh
-          </button>
-          <button id="btn-reset-mobile" type="button" title="Reset Data" class="p-2 rounded-xl text-xs font-medium text-rose-600 bg-rose-50 hover:bg-rose-100 transition">
-            Reset
-          </button>
-        </div>
       </div>
 
       <!-- Kontrol Pemilih Bulan & Tahun -->
       <div class="flex items-center justify-between sm:justify-end gap-2">
         <div class="flex items-center bg-slate-100 p-1 rounded-xl w-full sm:w-auto justify-between">
-          <button id="btn-prev-month" type="button" aria-label="Bulan Sebelumnya" class="p-2 rounded-lg text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-2xs transition">
+          <button id="btn-prev-month" type="button" aria-label="Bulan Sebelumnya" class="p-3 rounded-lg text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-sm transition">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
             </svg>
           </button>
 
           <div class="flex items-center gap-1.5 px-2">
-            <select id="select-month" aria-label="Pilih Bulan" class="bg-transparent text-sm font-bold text-slate-800 focus:outline-none cursor-pointer py-1">
+            <select id="select-month" aria-label="Pilih Bulan" class="bg-transparent text-sm font-bold text-slate-800 focus:outline-none cursor-pointer py-2">
               <option value="01">Januari</option>
               <option value="02">Februari</option>
               <option value="03">Maret</option>
@@ -117,27 +138,18 @@
               <option value="11">November</option>
               <option value="12">Desember</option>
             </select>
-            <select id="select-year" aria-label="Pilih Tahun" class="bg-transparent text-sm font-bold text-slate-800 focus:outline-none cursor-pointer py-1">
+            <select id="select-year" aria-label="Pilih Tahun" class="bg-transparent text-sm font-bold text-slate-800 focus:outline-none cursor-pointer py-2">
               <!-- Diisi otomatis via JS -->
             </select>
           </div>
 
-          <button id="btn-next-month" type="button" aria-label="Bulan Berikutnya" class="p-2 rounded-lg text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-2xs transition">
+          <button id="btn-next-month" type="button" aria-label="Bulan Berikutnya" class="p-3 rounded-lg text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-sm transition">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
           </button>
         </div>
 
-        <!-- Aksi Data Desktop -->
-        <div class="hidden sm:flex items-center gap-2 ml-2">
-          <button id="btn-sample-desktop" type="button" class="px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
-            Isi Contoh Data
-          </button>
-          <button id="btn-reset-desktop" type="button" class="px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 transition">
-            Hapus Semua
-          </button>
-        </div>
       </div>
     </div>
   </header>
@@ -197,7 +209,7 @@
 
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <!-- Card 1: Pemasukan Bulan Ini -->
-        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 card-shadow">
+        <div class="bg-white rounded-2xl p-3.5 sm:p-5 border border-slate-200/80 card-shadow">
           <div class="flex items-center gap-2 text-blue-600 mb-2">
             <span class="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
@@ -206,11 +218,11 @@
             </span>
             <span class="text-xs font-semibold text-slate-500">Pemasukan</span>
           </div>
-          <p id="stat-month-income" class="text-lg sm:text-xl font-bold text-slate-900 tabular-nums truncate">Rp 0</p>
+          <p id="stat-month-income" class="text-base sm:text-xl font-bold text-slate-900 tabular-nums truncate">Rp 0</p>
         </div>
 
         <!-- Card 2: Tabungan Wajib Bulan Ini -->
-        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 card-shadow">
+        <div class="bg-white rounded-2xl p-3.5 sm:p-5 border border-slate-200/80 card-shadow">
           <div class="flex items-center gap-2 text-emerald-600 mb-2">
             <span class="w-7 h-7 rounded-lg bg-emerald-50 flex items-center justify-center">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
@@ -219,11 +231,11 @@
             </span>
             <span class="text-xs font-semibold text-slate-500">Tabungan Wajib</span>
           </div>
-          <p id="stat-month-savings" class="text-lg sm:text-xl font-bold text-emerald-700 tabular-nums truncate">Rp 0</p>
+          <p id="stat-month-savings" class="text-base sm:text-xl font-bold text-emerald-700 tabular-nums truncate">Rp 0</p>
         </div>
 
         <!-- Card 3: Pengeluaran Bulan Ini -->
-        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 card-shadow">
+        <div class="bg-white rounded-2xl p-3.5 sm:p-5 border border-slate-200/80 card-shadow">
           <div class="flex items-center gap-2 text-amber-600 mb-2">
             <span class="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
@@ -232,11 +244,11 @@
             </span>
             <span class="text-xs font-semibold text-slate-500">Pengeluaran</span>
           </div>
-          <p id="stat-month-expense" class="text-lg sm:text-xl font-bold text-amber-700 tabular-nums truncate">Rp 0</p>
+          <p id="stat-month-expense" class="text-base sm:text-xl font-bold text-amber-700 tabular-nums truncate">Rp 0</p>
         </div>
 
         <!-- Card 4: Sisa Uang (Bulan Ini) -->
-        <div id="card-month-remaining" class="bg-white rounded-2xl p-4 sm:p-5 border-2 border-slate-200 card-shadow transition-colors">
+        <div id="card-month-remaining" class="bg-white rounded-2xl p-3.5 sm:p-5 border-2 border-slate-200 card-shadow transition-colors">
           <div class="flex items-center gap-2 text-indigo-600 mb-2">
             <span id="icon-month-remaining" class="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
@@ -245,7 +257,7 @@
             </span>
             <span class="text-xs font-semibold text-slate-600">Sisa Uang (Bulan Ini)</span>
           </div>
-          <p id="stat-month-remaining" class="text-lg sm:text-xl font-extrabold text-slate-900 tabular-nums truncate">Rp 0</p>
+          <p id="stat-month-remaining" class="text-base sm:text-xl font-extrabold text-slate-900 tabular-nums truncate">Rp 0</p>
         </div>
       </div>
 
@@ -288,9 +300,9 @@
               <label for="income-source" class="block text-xs font-semibold text-slate-700 mb-1">Sumber Pemasukan</label>
               <input
                 id="income-source"
-                type="text"
+                type="text" autocomplete="off" autocapitalize="sentences" enterkeyhint="next"
                 placeholder="Contoh: Gaji Bulanan, Usaha, Bonus"
-                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                class="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
                 required
               />
             </div>
@@ -301,14 +313,14 @@
                 <input
                   id="income-amount"
                   type="text"
-                  inputmode="numeric"
+                  inputmode="numeric" autocomplete="off" enterkeyhint="done"
                   placeholder="0"
-                  class="currency-input w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-900 tabular-nums focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                  class="currency-input w-full pl-10 pr-3.5 py-3 rounded-xl border border-slate-200 text-sm font-semibold text-slate-900 tabular-nums focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
                   required
                 />
               </div>
             </div>
-            <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white text-sm font-semibold transition shadow-xs flex items-center justify-center gap-2">
+            <button type="submit" class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white text-sm font-semibold transition shadow-sm flex items-center justify-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
@@ -343,9 +355,9 @@
                 <input
                   id="savings-amount"
                   type="text"
-                  inputmode="numeric"
+                  inputmode="numeric" autocomplete="off" enterkeyhint="done"
                   placeholder="0"
-                  class="currency-input w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-bold text-emerald-700 tabular-nums focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition"
+                  class="currency-input w-full pl-10 pr-3.5 py-3 rounded-xl border border-slate-200 text-sm font-bold text-emerald-700 tabular-nums focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition"
                 />
               </div>
             </div>
@@ -353,12 +365,12 @@
               <label for="savings-note" class="block text-xs font-semibold text-slate-700 mb-1">Tujuan / Catatan Tabungan (Opsional)</label>
               <input
                 id="savings-note"
-                type="text"
+                type="text" autocomplete="off" autocapitalize="sentences" enterkeyhint="next"
                 placeholder="Contoh: Dana Darurat, Pendidikan Anak"
-                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition"
+                class="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition"
               />
             </div>
-            <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white text-sm font-semibold transition shadow-xs flex items-center justify-center gap-2">
+            <button type="submit" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white text-sm font-semibold transition shadow-sm flex items-center justify-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
               </svg>
@@ -393,7 +405,7 @@
                 </div>
                 <select
                   id="expense-category-select"
-                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition cursor-pointer"
+                  class="w-full px-3.5 py-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition cursor-pointer"
                 >
                   <!-- Diisi otomatis dari daftar kategori default + custom -->
                 </select>
@@ -407,9 +419,9 @@
                   <input
                     id="expense-amount"
                     type="text"
-                    inputmode="numeric"
+                    inputmode="numeric" autocomplete="off" enterkeyhint="done"
                     placeholder="0"
-                    class="currency-input w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-900 tabular-nums focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+                    class="currency-input w-full pl-10 pr-3.5 py-3 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-900 tabular-nums focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
                     required
                   />
                 </div>
@@ -423,9 +435,9 @@
               </label>
               <input
                 id="expense-custom-name"
-                type="text"
+                type="text" autocomplete="off" autocapitalize="sentences" enterkeyhint="next"
                 placeholder="Contoh: Susu & Popok Anak, Servis Motor, Arisan RT..."
-                class="w-full px-3.5 py-2.5 rounded-xl border border-amber-300 bg-white text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/25 focus:border-amber-500 transition"
+                class="w-full px-3.5 py-3 rounded-xl border border-amber-300 bg-white text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/25 focus:border-amber-500 transition"
               />
               <label class="inline-flex items-center gap-2 text-xs text-slate-600 cursor-pointer select-none">
                 <input id="save-custom-category" type="checkbox" checked class="rounded border-slate-300 text-amber-600 focus:ring-amber-500" />
@@ -438,13 +450,13 @@
               <label for="expense-note" class="block text-xs font-semibold text-slate-700 mb-1">Keterangan Tambahan (Opsional)</label>
               <input
                 id="expense-note"
-                type="text"
+                type="text" autocomplete="off" autocapitalize="sentences" enterkeyhint="next"
                 placeholder="Contoh: Minggu ke-1, Belanja di pasar, dll."
-                class="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
+                class="w-full px-3.5 py-3 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition"
               />
             </div>
 
-            <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-[0.99] text-white text-sm font-semibold transition shadow-xs flex items-center justify-center gap-2">
+            <button type="submit" class="w-full py-3 px-4 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-[0.99] text-white text-sm font-semibold transition shadow-sm flex items-center justify-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
@@ -473,11 +485,22 @@
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
         <div>
           <h3 class="text-base font-bold text-slate-900">Rekap Per Bulan</h3>
-          <p class="text-xs text-slate-500">Klik baris bulan untuk melihat atau mengubah rinciannya</p>
+          <p class="text-xs text-slate-500">Ketuk bulan untuk melihat atau mengubah rinciannya</p>
+        </div>
+        <div class="grid grid-cols-2 sm:flex items-center gap-2">
+          <button id="btn-copy-recap" type="button" class="inline-flex items-center justify-center gap-2 min-h-[44px] px-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-[0.99] text-slate-700 text-xs font-semibold transition">
+            Salin Teks
+          </button>
+          <button id="btn-export-pdf" type="button" class="inline-flex items-center justify-center gap-2 min-h-[44px] px-3.5 rounded-xl bg-rose-600 hover:bg-rose-700 active:scale-[0.99] text-white text-xs font-semibold transition shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            Export PDF
+          </button>
         </div>
       </div>
 
-      <div class="overflow-x-auto">
+      <div class="hidden sm:block overflow-x-auto">
         <table class="w-full text-left border-collapse min-w-[600px]">
           <thead>
             <tr class="border-b border-slate-200 text-[11px] font-bold uppercase tracking-wider text-slate-500">
@@ -491,7 +514,40 @@
           <tbody id="monthly-recap-body" class="divide-y divide-slate-100 text-sm">
             <!-- Diisi via JS -->
           </tbody>
+          <tfoot id="monthly-recap-foot">
+            <!-- Baris total diisi via JS -->
+          </tfoot>
         </table>
+      </div>
+
+      <!-- Tampilan kartu khusus layar HP -->
+      <div id="monthly-recap-cards" class="sm:hidden space-y-3"></div>
+    </section>
+
+    <!-- BAGIAN 5: CADANGAN & PENGATURAN DATA -->
+    <section class="bg-white rounded-2xl p-5 border border-slate-200/80 card-shadow">
+      <div class="mb-4">
+        <h3 class="text-base font-bold text-slate-900">Cadangan &amp; Pengaturan Data</h3>
+        <p class="text-xs text-slate-500 mt-0.5">
+          Data tersimpan di HP ini saja. Buat cadangan secara berkala supaya aman jika aplikasi dihapus atau HP diganti.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <button id="btn-backup-save" type="button" class="min-h-[48px] px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white text-sm font-semibold transition">
+          Simpan Cadangan (File)
+        </button>
+        <button id="btn-backup-copy" type="button" class="min-h-[48px] px-4 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-[0.99] text-slate-700 text-sm font-semibold transition">
+          Salin Cadangan (Teks)
+        </button>
+        <button id="btn-restore" type="button" class="min-h-[48px] px-4 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-[0.99] text-slate-700 text-sm font-semibold transition">
+          Pulihkan Data
+        </button>
+        <button id="btn-sample" type="button" class="min-h-[48px] px-4 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-[0.99] text-slate-700 text-sm font-semibold transition">
+          Isi Contoh Data
+        </button>
+        <button id="btn-reset" type="button" class="sm:col-span-2 min-h-[48px] px-4 rounded-xl bg-rose-50 hover:bg-rose-100 active:scale-[0.99] text-rose-600 text-sm font-semibold transition">
+          Hapus Semua Data
+        </button>
       </div>
     </section>
 
@@ -499,7 +555,7 @@
 
   <!-- Footer Simpel -->
   <footer class="max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 text-center text-xs text-slate-400">
-    Agung Arroyan - 2026.
+    Data tersimpan otomatis di perangkat ini. Rutin buat cadangan ya.
   </footer>
 
   <script>
@@ -608,6 +664,12 @@
       const elExpenseCountBadge = document.getElementById('expense-count-badge');
 
       const elMonthlyRecapBody = document.getElementById('monthly-recap-body');
+      const elMonthlyRecapFoot = document.getElementById('monthly-recap-foot');
+      const elBtnExportPdf = document.getElementById('btn-export-pdf');
+      const elMonthlyRecapCards = document.getElementById('monthly-recap-cards');
+      const elRestoreModal = document.getElementById('restore-modal');
+      const elRestoreFile = document.getElementById('restore-file');
+      const elRestoreText = document.getElementById('restore-text');
 
       // =========================================================================
       // UTILITAS FORMAT & PENYIMPANAN
@@ -674,17 +736,42 @@
       }
 
       /**
+       * Memastikan struktur data satu bulan selalu lengkap (cegah error bila data rusak)
+       */
+      function normalizeRecord(r) {
+        const rec = r && typeof r === 'object' ? r : {};
+        return {
+          incomes: Array.isArray(rec.incomes) ? rec.incomes : [],
+          mandatorySavings: Number(rec.mandatorySavings) || 0,
+          savingsNote: typeof rec.savingsNote === 'string' ? rec.savingsNote : '',
+          expenses: Array.isArray(rec.expenses) ? rec.expenses : []
+        };
+      }
+
+      /**
        * Memuat data dari LocalStorage dengan penanganan error
        */
       function loadFromStorage() {
         try {
           const savedData = localStorage.getItem(STORAGE_KEY);
           if (savedData) {
-            appData = JSON.parse(savedData) || {};
+            const parsed = JSON.parse(savedData);
+            appData = {};
+            if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+              Object.keys(parsed).forEach((key) => {
+                // Hanya terima key berformat YYYY-MM, dan rapikan struktur datanya
+                if (/^\d{4}-(0[1-9]|1[0-2])$/.test(key)) {
+                  appData[key] = normalizeRecord(parsed[key]);
+                }
+              });
+            }
           }
           const savedCats = localStorage.getItem(CUSTOM_CAT_KEY);
           if (savedCats) {
-            customCategories = JSON.parse(savedCats) || [];
+            const parsedCats = JSON.parse(savedCats);
+            customCategories = Array.isArray(parsedCats)
+              ? parsedCats.filter((c) => typeof c === 'string' && c.trim())
+              : [];
           }
         } catch (err) {
           console.error('Gagal membaca data dari penyimpanan lokal:', err);
@@ -732,7 +819,7 @@
         const savings = Number(record.mandatorySavings) || 0;
         const expense = (record.expenses || []).reduce((sum, item) => sum + (Number(item.amount) || 0), 0);
         const remaining = income - savings - expense;
-        const hasActivity = income > 0 || savings > 0 || expense > 0 || (record.incomes?.length > 0) || (record.expenses?.length > 0);
+        const hasActivity = income > 0 || savings > 0 || expense > 0;
         return { income, savings, expense, remaining, hasActivity };
       }
 
@@ -761,8 +848,46 @@
         setTimeout(() => {
           toast.classList.add('opacity-0', 'translate-y-2');
           setTimeout(() => toast.remove(), 220);
-        }, 2800);
+        }, type === 'error' ? 6000 : 2800);
       }
+
+      // Tombol Back Android menutup dialog yang sedang terbuka (bukan langsung keluar aplikasi)
+      const modalStack = [];
+      let ignorePops = 0;
+
+      function registerModal(onBack) {
+        const entry = { onBack, pushed: false };
+        try {
+          history.pushState({ dompetModal: true }, '');
+          entry.pushed = true;
+        } catch (err) {
+          /* tidak apa-apa: tombol Back hanya tidak menutup dialog */
+        }
+        modalStack.push(entry);
+        return entry;
+      }
+
+      function unregisterModal(entry) {
+        const i = modalStack.indexOf(entry);
+        if (i > -1) modalStack.splice(i, 1);
+        if (entry.pushed) {
+          entry.pushed = false;
+          ignorePops++;
+          history.back();
+        }
+      }
+
+      window.addEventListener('popstate', () => {
+        if (ignorePops > 0) {
+          ignorePops--;
+          return;
+        }
+        const entry = modalStack.pop();
+        if (entry) {
+          entry.pushed = false;
+          entry.onBack();
+        }
+      });
 
       function showConfirmDialog({ title, message, confirmText = 'Ya, Hapus', isDanger = true }) {
         return new Promise((resolve) => {
@@ -778,35 +903,65 @@
           btnOk.textContent = confirmText;
 
           if (isDanger) {
-            btnOk.className = 'px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 transition';
+            btnOk.className = 'px-5 py-3 rounded-xl text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 transition';
             iconWrap.className = 'w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0';
           } else {
-            btnOk.className = 'px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition';
+            btnOk.className = 'px-5 py-3 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition';
             iconWrap.className = 'w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0';
           }
 
           modal.classList.remove('hidden');
           modal.classList.add('flex');
 
+          let entry = null;
+          let done = false;
+
           const cleanup = (result) => {
+            if (done) return;
+            done = true;
             modal.classList.add('hidden');
             modal.classList.remove('flex');
             btnOk.removeEventListener('click', onOk);
             btnCancel.removeEventListener('click', onCancel);
+            modal.removeEventListener('click', onBackdrop);
+            document.removeEventListener('keydown', onKey);
+            if (entry) unregisterModal(entry);
             resolve(result);
           };
 
           const onOk = () => cleanup(true);
           const onCancel = () => cleanup(false);
+          const onBackdrop = (e) => { if (e.target === modal) cleanup(false); };
+          const onKey = (e) => { if (e.key === 'Escape') cleanup(false); };
 
           btnOk.addEventListener('click', onOk);
           btnCancel.addEventListener('click', onCancel);
+          modal.addEventListener('click', onBackdrop);
+          document.addEventListener('keydown', onKey);
+          entry = registerModal(() => cleanup(false));
         });
       }
 
       // =========================================================================
       // INISIALISASI DROPDOWN TAHUN & KATEGORI PENGELUARAN
       // =========================================================================
+
+      /**
+       * Pastikan tahun tertentu ada di dropdown tahun (dan urut dari kecil ke besar)
+       */
+      function ensureYearOption(year) {
+        if ([...elSelectYear.options].some((o) => o.value === year)) return;
+        const years = [...elSelectYear.options].map((o) => o.value);
+        years.push(year);
+        years.sort();
+        elSelectYear.innerHTML = '';
+        years.forEach((y) => {
+          const opt = document.createElement('option');
+          opt.value = y;
+          opt.textContent = y;
+          elSelectYear.appendChild(opt);
+        });
+      }
 
       function initYearSelector() {
         const baseYear = now.getFullYear();
@@ -913,33 +1068,35 @@
         if (!summary.hasActivity) {
           elMonthHealthBadge.textContent = 'Belum ada catatan';
           elMonthHealthBadge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600';
-          elCardMonthRemaining.className = 'bg-white rounded-2xl p-4 sm:p-5 border-2 border-slate-200 card-shadow transition-colors';
-          elStatMonthRemaining.className = 'text-lg sm:text-xl font-extrabold text-slate-900 tabular-nums truncate';
+          elCardMonthRemaining.className = 'bg-white rounded-2xl p-3.5 sm:p-5 border-2 border-slate-200 card-shadow transition-colors';
+          elStatMonthRemaining.className = 'text-base sm:text-xl font-extrabold text-slate-900 tabular-nums truncate';
         } else if (summary.remaining < 0) {
           elMonthHealthBadge.textContent = 'Defisit / Minus';
           elMonthHealthBadge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-700';
-          elCardMonthRemaining.className = 'bg-rose-50/40 rounded-2xl p-4 sm:p-5 border-2 border-rose-200 card-shadow transition-colors';
-          elStatMonthRemaining.className = 'text-lg sm:text-xl font-extrabold text-rose-700 tabular-nums truncate';
+          elCardMonthRemaining.className = 'bg-rose-50/40 rounded-2xl p-3.5 sm:p-5 border-2 border-rose-200 card-shadow transition-colors';
+          elStatMonthRemaining.className = 'text-base sm:text-xl font-extrabold text-rose-700 tabular-nums truncate';
         } else {
           elMonthHealthBadge.textContent = 'Keuangan Sehat';
           elMonthHealthBadge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700';
-          elCardMonthRemaining.className = 'bg-indigo-50/30 rounded-2xl p-4 sm:p-5 border-2 border-indigo-200 card-shadow transition-colors';
-          elStatMonthRemaining.className = 'text-lg sm:text-xl font-extrabold text-indigo-700 tabular-nums truncate';
+          elCardMonthRemaining.className = 'bg-indigo-50/30 rounded-2xl p-3.5 sm:p-5 border-2 border-indigo-200 card-shadow transition-colors';
+          elStatMonthRemaining.className = 'text-base sm:text-xl font-extrabold text-indigo-700 tabular-nums truncate';
         }
 
         // 4. Update Progress Bar Alokasi Dana Bulan Ini
         if (summary.income > 0) {
-          const pctSav = Math.min(100, Math.max(0, Math.round((summary.savings / summary.income) * 100)));
-          const pctExp = Math.min(100, Math.max(0, Math.round((summary.expense / summary.income) * 100)));
-          const pctRem = Math.max(0, 100 - pctSav - pctExp);
+          const pctSav = Math.max(0, Math.round((summary.savings / summary.income) * 100));
+          const pctExp = Math.max(0, Math.round((summary.expense / summary.income) * 100));
+          const pctRem = summary.remaining > 0 ? Math.max(0, 100 - pctSav - pctExp) : 0;
+          // Saat defisit total > 100%, lebar bar diskalakan agar tetap pas 100%
+          const barTotal = Math.max(100, pctSav + pctExp + pctRem);
 
           elPctSavings.textContent = `${pctSav}%`;
           elPctExpense.textContent = `${pctExp}%`;
-          elPctRemaining.textContent = `${summary.remaining < 0 ? 0 : pctRem}%`;
+          elPctRemaining.textContent = `${pctRem}%`;
 
-          elBarSavings.style.width = `${pctSav}%`;
-          elBarExpense.style.width = `${pctExp}%`;
-          elBarRemaining.style.width = `${summary.remaining < 0 ? 0 : pctRem}%`;
+          elBarSavings.style.width = `${(pctSav / barTotal) * 100}%`;
+          elBarExpense.style.width = `${(pctExp / barTotal) * 100}%`;
+          elBarRemaining.style.width = `${(pctRem / barTotal) * 100}%`;
         } else {
           elPctSavings.textContent = '0%';
           elPctExpense.textContent = '0%';
@@ -981,15 +1138,15 @@
             (item) => `
             <li class="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 transition group">
               <div class="min-w-0">
-                <p class="text-sm font-semibold text-slate-800 truncate">${escapeHTML(item.source)}</p>
+                <p class="text-sm font-semibold text-slate-800 leading-snug break-words">${escapeHTML(item.source)}</p>
               </div>
               <div class="flex items-center gap-2.5 shrink-0">
                 <span class="text-sm font-bold text-blue-700 tabular-nums">${formatRupiah(item.amount)}</span>
                 <button
                   type="button"
-                  data-delete-income="${item.id}"
+                  data-delete-income="${escapeHTML(String(item.id))}"
                   aria-label="Hapus pemasukan"
-                  class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
+                  class="p-2.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
@@ -1025,7 +1182,7 @@
               <div class="min-w-0">
                 <div class="flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
-                  <p class="text-sm font-semibold text-slate-800 truncate">${escapeHTML(item.category)}</p>
+                  <p class="text-sm font-semibold text-slate-800 leading-snug break-words">${escapeHTML(item.category)}</p>
                   ${
                     item.isCustom
                       ? '<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 shrink-0">Custom</span>'
@@ -1034,7 +1191,7 @@
                 </div>
                 ${
                   item.note
-                    ? `<p class="text-xs text-slate-500 mt-0.5 pl-4 truncate">${escapeHTML(item.note)}</p>`
+                    ? `<p class="text-xs text-slate-500 mt-0.5 pl-4 break-words">${escapeHTML(item.note)}</p>`
                     : ''
                 }
               </div>
@@ -1042,9 +1199,9 @@
                 <span class="text-sm font-bold text-amber-700 tabular-nums">${formatRupiah(item.amount)}</span>
                 <button
                   type="button"
-                  data-delete-expense="${item.id}"
+                  data-delete-expense="${escapeHTML(String(item.id))}"
                   aria-label="Hapus pengeluaran"
-                  class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
+                  class="p-2.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
@@ -1057,55 +1214,628 @@
           .join('');
       }
 
+      // =========================================================================
+      // REKAP PER BULAN (tabel untuk layar lebar, kartu untuk layar HP)
+      // =========================================================================
+
       /**
-       * Merender tabel ringkasan seluruh bulan yang pernah tercatat
+       * Daftar key bulan yang punya catatan (terbaru di atas)
        */
+      function getRecapKeys() {
+        return Object.keys(appData)
+          .filter((k) => calculateMonthSummary(appData[k]).hasActivity)
+          .sort((a, b) => b.localeCompare(a));
+      }
+
+      /**
+       * Data rekap siap pakai (untuk tabel, PDF, dan teks).
+       * ascending = true -> dari bulan paling lama ke terbaru
+       */
+      function getRecapData(ascending) {
+        const keys = getRecapKeys();
+        if (ascending) keys.reverse();
+        const total = { income: 0, savings: 0, expense: 0, remaining: 0 };
+        const rows = keys.map((key) => {
+          const s = calculateMonthSummary(appData[key]);
+          total.income += s.income;
+          total.savings += s.savings;
+          total.expense += s.expense;
+          total.remaining += s.remaining;
+          return {
+            key,
+            label: formatMonthKeyLabel(key),
+            income: s.income,
+            savings: s.savings,
+            expense: s.expense,
+            remaining: s.remaining
+          };
+        });
+        return { rows, total };
+      }
+
       function renderMonthlyRecapTable() {
         const activeKey = getActiveMonthKey();
-        const keys = Object.keys(appData)
-          .filter((k) => calculateMonthSummary(appData[k]).hasActivity)
-          .sort((a, b) => b.localeCompare(a)); // Urutkan dari bulan terbaru
+        const { rows, total } = getRecapData(false);
 
-        if (!keys.length) {
+        if (!rows.length) {
+          const emptyText =
+            'Belum ada riwayat bulanan. Mulai catat pemasukan, tabungan wajib, atau pengeluaran di atas.';
           elMonthlyRecapBody.innerHTML = `
             <tr>
-              <td colspan="5" class="py-6 text-center text-xs text-slate-400">
-                Belum ada riwayat bulanan. Mulai catat pemasukan, tabungan wajib, atau pengeluaran di atas.
-              </td>
+              <td colspan="5" class="py-6 text-center text-xs text-slate-400">${emptyText}</td>
             </tr>
+          `;
+          elMonthlyRecapFoot.innerHTML = '';
+          elMonthlyRecapCards.innerHTML = `
+            <p class="py-6 text-center text-xs text-slate-400">${emptyText}</p>
           `;
           return;
         }
 
-        elMonthlyRecapBody.innerHTML = keys
-          .map((key) => {
-            const s = calculateMonthSummary(appData[key]);
-            const isCurrent = key === activeKey;
+        const activeBadge =
+          '<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-600 text-white">Aktif</span>';
+
+        // --- Tabel (layar lebar) ---
+        elMonthlyRecapBody.innerHTML = rows
+          .map((r) => {
+            const isCurrent = r.key === activeKey;
             return `
               <tr
-                data-select-month-key="${key}"
+                data-select-month-key="${escapeHTML(r.key)}"
+                tabindex="0"
+                role="button"
+                aria-label="Buka ${r.label}"
                 class="cursor-pointer transition ${
                   isCurrent ? 'bg-emerald-50/60 font-semibold' : 'hover:bg-slate-50'
                 }"
               >
-                <td class="py-3 px-3 text-slate-800 flex items-center gap-2">
-                  <span>${formatMonthKeyLabel(key)}</span>
-                  ${
-                    isCurrent
-                      ? '<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-600 text-white">Aktif</span>'
-                      : ''
-                  }
+                <td class="py-3 px-3 text-slate-800">
+                  <div class="flex items-center gap-2">
+                    <span>${r.label}</span>
+                    ${isCurrent ? activeBadge : ''}
+                  </div>
                 </td>
-                <td class="py-3 px-3 text-right text-blue-700 tabular-nums">${formatRupiah(s.income)}</td>
-                <td class="py-3 px-3 text-right text-emerald-700 tabular-nums">${formatRupiah(s.savings)}</td>
-                <td class="py-3 px-3 text-right text-amber-700 tabular-nums">${formatRupiah(s.expense)}</td>
+                <td class="py-3 px-3 text-right text-blue-700 tabular-nums">${formatRupiah(r.income)}</td>
+                <td class="py-3 px-3 text-right text-emerald-700 tabular-nums">${formatRupiah(r.savings)}</td>
+                <td class="py-3 px-3 text-right text-amber-700 tabular-nums">${formatRupiah(r.expense)}</td>
                 <td class="py-3 px-3 text-right font-bold tabular-nums ${
-                  s.remaining < 0 ? 'text-rose-600' : 'text-slate-900'
-                }">${formatRupiah(s.remaining)}</td>
+                  r.remaining < 0 ? 'text-rose-600' : 'text-slate-900'
+                }">${formatRupiah(r.remaining)}</td>
               </tr>
             `;
           })
           .join('');
+
+        elMonthlyRecapFoot.innerHTML = `
+          <tr class="border-t-2 border-slate-200 bg-slate-50 text-sm font-bold">
+            <td class="py-3 px-3 text-slate-800">Total</td>
+            <td class="py-3 px-3 text-right text-blue-700 tabular-nums">${formatRupiah(total.income)}</td>
+            <td class="py-3 px-3 text-right text-emerald-700 tabular-nums">${formatRupiah(total.savings)}</td>
+            <td class="py-3 px-3 text-right text-amber-700 tabular-nums">${formatRupiah(total.expense)}</td>
+            <td class="py-3 px-3 text-right tabular-nums ${
+              total.remaining < 0 ? 'text-rose-600' : 'text-slate-900'
+            }">${formatRupiah(total.remaining)}</td>
+          </tr>
+        `;
+
+        // --- Kartu (layar HP) ---
+        const cardHtml = rows
+          .map((r) => {
+            const isCurrent = r.key === activeKey;
+            return `
+              <div
+                data-select-month-key="${escapeHTML(r.key)}"
+                tabindex="0"
+                role="button"
+                aria-label="Buka ${r.label}"
+                class="rounded-xl border p-3.5 active:bg-slate-100 ${
+                  isCurrent ? 'border-emerald-300 bg-emerald-50/60' : 'border-slate-200 bg-white'
+                }"
+              >
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-center gap-2 min-w-0">
+                    <span class="text-sm font-bold text-slate-800">${r.label}</span>
+                    ${isCurrent ? activeBadge : ''}
+                  </div>
+                  <div class="text-right shrink-0">
+                    <p class="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Sisa uang</p>
+                    <p class="text-sm font-extrabold tabular-nums ${
+                      r.remaining < 0 ? 'text-rose-600' : 'text-slate-900'
+                    }">${formatRupiah(r.remaining)}</p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 mt-3 text-[11px]">
+                  <div class="min-w-0">
+                    <p class="text-slate-400">Pemasukan</p>
+                    <p class="font-semibold text-blue-700 tabular-nums">${formatRupiah(r.income)}</p>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-slate-400">Tabungan</p>
+                    <p class="font-semibold text-emerald-700 tabular-nums">${formatRupiah(r.savings)}</p>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-slate-400">Pengeluaran</p>
+                    <p class="font-semibold text-amber-700 tabular-nums">${formatRupiah(r.expense)}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+
+        const totalCard = `
+          <div class="rounded-xl border-2 border-slate-200 bg-slate-50 p-3.5">
+            <div class="flex items-start justify-between gap-3">
+              <span class="text-sm font-bold text-slate-800">Total</span>
+              <div class="text-right shrink-0">
+                <p class="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Sisa uang</p>
+                <p class="text-sm font-extrabold tabular-nums ${
+                  total.remaining < 0 ? 'text-rose-600' : 'text-slate-900'
+                }">${formatRupiah(total.remaining)}</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 mt-3 text-[11px]">
+              <div class="min-w-0">
+                <p class="text-slate-400">Pemasukan</p>
+                <p class="font-semibold text-blue-700 tabular-nums">${formatRupiah(total.income)}</p>
+              </div>
+              <div class="min-w-0">
+                <p class="text-slate-400">Tabungan</p>
+                <p class="font-semibold text-emerald-700 tabular-nums">${formatRupiah(total.savings)}</p>
+              </div>
+              <div class="min-w-0">
+                <p class="text-slate-400">Pengeluaran</p>
+                <p class="font-semibold text-amber-700 tabular-nums">${formatRupiah(total.expense)}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        elMonthlyRecapCards.innerHTML = cardHtml + totalCard;
+      }
+
+      // =========================================================================
+      // PEMBUAT PDF SEDERHANA (tanpa library luar, jadi tetap jalan saat offline)
+      // =========================================================================
+
+      // Lebar karakter font Helvetica (ASCII 32..126, satuan 1/1000 em)
+      const HELV_W = [
+        278, 278, 355, 556, 556, 889, 667, 191, 333, 333, 389, 584, 278, 333, 278, 278,
+        556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 278, 278, 584, 584, 584, 556,
+        1015, 667, 667, 722, 722, 667, 611, 778, 722, 278, 500, 667, 556, 833, 722, 778,
+        667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 278, 278, 278, 469, 556,
+        333, 556, 556, 500, 556, 556, 278, 556, 556, 222, 222, 500, 222, 833, 556, 556,
+        556, 556, 333, 500, 278, 556, 500, 722, 500, 500, 500, 334, 260, 334, 584
+      ];
+      const HELV_BOLD_W = [
+        278, 333, 474, 556, 556, 889, 722, 238, 333, 333, 389, 584, 278, 333, 278, 278,
+        556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 333, 333, 584, 584, 584, 611,
+        975, 722, 722, 722, 722, 667, 611, 778, 722, 278, 556, 722, 611, 833, 722, 778,
+        667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 333, 278, 333, 584, 556,
+        333, 556, 611, 556, 611, 556, 333, 611, 611, 278, 278, 556, 278, 889, 611, 611,
+        611, 611, 389, 556, 333, 611, 556, 778, 556, 556, 500, 389, 280, 389, 584
+      ];
+
+      /**
+       * Membuat file PDF (Uint8Array) berisi tabel rekap per bulan.
+       */
+      function buildRecapPdf(rows, total, printDate) {
+        const PW = 595.28;
+        const PH = 841.89;
+        const M = 40;
+        const colW = [115, 100, 100, 100, 100];
+        const tableW = colW.reduce((a, b) => a + b, 0);
+        const ROW_H = 24;
+        const HEAD_H = 28;
+        const GREEN = [5, 150, 105];
+        const INK = [15, 23, 42];
+        const MUTED = [100, 116, 139];
+        const LINE = [226, 232, 240];
+        const RED = [225, 29, 72];
+        const GRAY_BG = [241, 245, 249];
+
+        const pages = [];
+        let ops = '';
+        let yTop = 0;
+
+        const n = (v) => String(Math.round(v * 100) / 100);
+        const rgbOp = (c, stroke) =>
+          `${n(c[0] / 255)} ${n(c[1] / 255)} ${n(c[2] / 255)} ${stroke ? 'RG' : 'rg'}\n`;
+        const esc = (s) =>
+          String(s)
+            .replace(/[^\x20-\x7E]/g, '?')
+            .replace(/([\\()])/g, '\\$1');
+        const widthOf = (s, size, bold) => {
+          const table = bold ? HELV_BOLD_W : HELV_W;
+          let w = 0;
+          const str = String(s);
+          for (let i = 0; i < str.length; i++) {
+            w += table[str.charCodeAt(i) - 32] || 556;
+          }
+          return (w * size) / 1000;
+        };
+
+        const drawText = (s, x, baselineTop, size, bold, color) => {
+          ops +=
+            rgbOp(color, false) +
+            `BT /${bold ? 'F2' : 'F1'} ${n(size)} Tf ${n(x)} ${n(PH - baselineTop)} Td (${esc(s)}) Tj ET\n`;
+        };
+        const fillRect = (x, top, w, h, color) => {
+          ops += rgbOp(color, false) + `${n(x)} ${n(PH - top - h)} ${n(w)} ${n(h)} re f\n`;
+        };
+        const hLine = (x1, x2, top, color) => {
+          ops += rgbOp(color, true) + `0.5 w ${n(x1)} ${n(PH - top)} m ${n(x2)} ${n(PH - top)} l S\n`;
+        };
+
+        // Gambar satu sel (angka rata kanan, teks rata kiri; kecilkan huruf bila kepanjangan)
+        const drawCell = (s, colIdx, rowTop, h, size, bold, color) => {
+          let x = M;
+          for (let i = 0; i < colIdx; i++) x += colW[i];
+          let fs = size;
+          const maxW = colW[colIdx] - 16;
+          while (widthOf(s, fs, bold) > maxW && fs > 6) fs -= 0.5;
+          const tx = colIdx === 0 ? x + 8 : x + colW[colIdx] - 8 - widthOf(s, fs, bold);
+          drawText(s, tx, rowTop + h / 2 + fs * 0.35, fs, bold, color);
+        };
+
+        const startPage = (isFirst) => {
+          if (ops) pages.push(ops);
+          ops = '';
+          yTop = M;
+          if (isFirst) {
+            drawText('Rekap Keuangan Keluarga Arroyan', M, yTop + 14, 16, true, INK);
+            drawText(`Rekap per bulan  |  Dicetak: ${printDate}`, M, yTop + 34, 10, false, MUTED);
+            yTop += 54;
+          }
+          fillRect(M, yTop, tableW, HEAD_H, GREEN);
+          ['Bulan', 'Pemasukan', 'Tabungan Wajib', 'Pengeluaran', 'Sisa Uang'].forEach((h, i) =>
+            drawCell(h, i, yTop, HEAD_H, 10, true, [255, 255, 255])
+          );
+          yTop += HEAD_H;
+        };
+
+        startPage(true);
+
+        rows.forEach((r) => {
+          if (yTop + ROW_H > PH - 70) startPage(false);
+          const vals = [
+            r.label,
+            formatRupiah(r.income),
+            formatRupiah(r.savings),
+            formatRupiah(r.expense),
+            formatRupiah(r.remaining)
+          ];
+          vals.forEach((v, i) => {
+            const color = i === 4 && r.remaining < 0 ? RED : INK;
+            drawCell(v, i, yTop, ROW_H, 10, i === 0 || i === 4, color);
+          });
+          yTop += ROW_H;
+          hLine(M, M + tableW, yTop, LINE);
+        });
+
+        if (yTop + ROW_H > PH - 70) startPage(false);
+        fillRect(M, yTop, tableW, ROW_H, GRAY_BG);
+        [
+          'TOTAL',
+          formatRupiah(total.income),
+          formatRupiah(total.savings),
+          formatRupiah(total.expense),
+          formatRupiah(total.remaining)
+        ].forEach((v, i) => {
+          const color = i === 4 && total.remaining < 0 ? RED : INK;
+          drawCell(v, i, yTop, ROW_H, 10, true, color);
+        });
+        yTop += ROW_H;
+        hLine(M, M + tableW, yTop, LINE);
+
+        pages.push(ops);
+
+        // Nomor halaman
+        pages.forEach((content, i) => {
+          ops = content;
+          const label = `Halaman ${i + 1} dari ${pages.length}`;
+          drawText(label, (PW - widthOf(label, 9, false)) / 2, PH - 24, 9, false, [148, 163, 184]);
+          pages[i] = ops;
+        });
+
+        // Susun struktur file PDF
+        const objs = [];
+        objs[1] = '<< /Type /Catalog /Pages 2 0 R >>';
+        objs[2] = `<< /Type /Pages /Kids [${pages.map((_, i) => `${5 + 2 * i} 0 R`).join(' ')}] /Count ${pages.length} >>`;
+        objs[3] = '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>';
+        objs[4] = '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>';
+        pages.forEach((content, i) => {
+          objs[5 + 2 * i] =
+            `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${PW} ${PH}] ` +
+            `/Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents ${6 + 2 * i} 0 R >>`;
+          objs[6 + 2 * i] = `<< /Length ${content.length} >>\nstream\n${content}endstream`;
+        });
+
+        let out = '%PDF-1.4\n';
+        const offsets = [];
+        for (let i = 1; i < objs.length; i++) {
+          offsets[i] = out.length;
+          out += `${i} 0 obj\n${objs[i]}\nendobj\n`;
+        }
+        const xrefPos = out.length;
+        out += `xref\n0 ${objs.length}\n0000000000 65535 f \n`;
+        for (let i = 1; i < objs.length; i++) {
+          out += `${String(offsets[i]).padStart(10, '0')} 00000 n \n`;
+        }
+        out += `trailer\n<< /Size ${objs.length} /Root 1 0 R >>\nstartxref\n${xrefPos}\n%%EOF`;
+
+        const bytes = new Uint8Array(out.length);
+        for (let i = 0; i < out.length; i++) bytes[i] = out.charCodeAt(i) & 0xff;
+        return bytes;
+      }
+
+      // =========================================================================
+      // SIMPAN / BAGIKAN FILE & SALIN TEKS (disesuaikan untuk WebView Android)
+      // =========================================================================
+
+      function todayStamp() {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      }
+
+      function formatToday() {
+        const d = new Date();
+        return `${d.getDate()} ${MONTH_NAMES[String(d.getMonth() + 1).padStart(2, '0')]} ${d.getFullYear()}`;
+      }
+
+      function bytesToBase64(bytes) {
+        let binary = '';
+        const chunk = 0x8000;
+        for (let i = 0; i < bytes.length; i += chunk) {
+          binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+        }
+        return btoa(binary);
+      }
+
+      /**
+       * Menyerahkan file ke pengguna. Mencoba beberapa cara berurutan:
+       * 1) Plugin Capacitor (jika APK dibuat dengan Capacitor)
+       * 2) Menu "Bagikan" Android (jika didukung WebView)
+       * 3) Unduhan biasa
+       * Mengembalikan: 'shared' | 'cancelled' | 'downloaded'
+       */
+      async function deliverFile(filename, mime, bytes) {
+        const blob = new Blob([bytes], { type: mime });
+
+        // 1) Capacitor
+        try {
+          const plugins = window.Capacitor && window.Capacitor.Plugins;
+          if (plugins && plugins.Filesystem && plugins.Share) {
+            const res = await plugins.Filesystem.writeFile({
+              path: filename,
+              data: bytesToBase64(bytes),
+              directory: 'CACHE'
+            });
+            await plugins.Share.share({ title: filename, url: res.uri });
+            return 'shared';
+          }
+        } catch (err) {
+          if (err && /cancel/i.test(String(err.message || err))) return 'cancelled';
+          console.warn('Capacitor gagal, coba cara lain:', err);
+        }
+
+        // 2) Menu Bagikan Android (hanya di WebView/aplikasi, agar di browser tetap langsung terunduh)
+        const isWebView = /; wv\)/.test(navigator.userAgent) || !!window.Capacitor;
+        try {
+          if (isWebView && typeof File === 'function' && navigator.canShare && navigator.share) {
+            const file = new File([blob], filename, { type: mime });
+            if (navigator.canShare({ files: [file] })) {
+              await navigator.share({ files: [file], title: filename });
+              return 'shared';
+            }
+          }
+        } catch (err) {
+          if (err && err.name === 'AbortError') return 'cancelled';
+          console.warn('Menu Bagikan gagal, coba unduhan biasa:', err);
+        }
+
+        // 3) Unduhan biasa
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          a.remove();
+          URL.revokeObjectURL(url);
+        }, 5000);
+        return 'downloaded';
+      }
+
+      function reportDelivery(result, filename) {
+        if (result === 'downloaded') {
+          showToast(`File "${filename}" dibuat. Cek folder Unduhan (Download) di HP.`);
+        }
+      }
+
+      async function copyToClipboard(text) {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+          }
+        } catch (err) {
+          /* lanjut ke cara cadangan */
+        }
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+          document.body.appendChild(ta);
+          ta.select();
+          ta.setSelectionRange(0, text.length);
+          const ok = document.execCommand('copy');
+          ta.remove();
+          return ok;
+        } catch (err) {
+          return false;
+        }
+      }
+
+      // =========================================================================
+      // EXPORT REKAP: PDF & SALIN TEKS
+      // =========================================================================
+
+      async function exportRecapToPDF() {
+        // Urutan di PDF: dari bulan paling lama ke terbaru (lebih enak dibaca sebagai laporan)
+        const { rows, total } = getRecapData(true);
+        if (!rows.length) {
+          showToast('Belum ada data rekap untuk di-export.', 'warning');
+          return;
+        }
+        try {
+          const filename = `rekap-keuangan-keluarga-${todayStamp()}.pdf`;
+          const bytes = buildRecapPdf(rows, total, formatToday());
+          const result = await deliverFile(filename, 'application/pdf', bytes);
+          reportDelivery(result, filename);
+        } catch (err) {
+          console.error('Gagal membuat PDF:', err);
+          showToast('Gagal membuat PDF. Coba lagi.', 'error');
+        }
+      }
+
+      async function copyRecapText() {
+        const { rows, total } = getRecapData(true);
+        if (!rows.length) {
+          showToast('Belum ada data rekap untuk disalin.', 'warning');
+          return;
+        }
+        const block = (title, r) =>
+          [
+            title,
+            `  Pemasukan      : ${formatRupiah(r.income)}`,
+            `  Tabungan Wajib : ${formatRupiah(r.savings)}`,
+            `  Pengeluaran    : ${formatRupiah(r.expense)}`,
+            `  Sisa Uang      : ${formatRupiah(r.remaining)}`
+          ].join('\n');
+        const text = [
+          'REKAP KEUANGAN KELUARGA ARROYAN',
+          `Dicetak: ${formatToday()}`,
+          '',
+          ...rows.map((r) => block(r.label, r) + '\n'),
+          block('TOTAL', total)
+        ].join('\n');
+        const ok = await copyToClipboard(text);
+        showToast(ok ? 'Rekap disalin. Tinggal tempel di WhatsApp atau catatan.' : 'Gagal menyalin teks.', ok ? 'success' : 'error');
+      }
+
+      // =========================================================================
+      // CADANGAN & PEMULIHAN DATA
+      // =========================================================================
+
+      function buildBackupObject() {
+        return {
+          app: 'dompet-keluarga',
+          version: 1,
+          exportedAt: new Date().toISOString(),
+          data: appData,
+          customCategories
+        };
+      }
+
+      /**
+       * Membaca & memvalidasi teks cadangan. Melempar error bila tidak valid.
+       */
+      function parseBackup(text) {
+        const obj = JSON.parse(text);
+        if (!obj || obj.app !== 'dompet-keluarga' || !obj.data || typeof obj.data !== 'object' || Array.isArray(obj.data)) {
+          throw new Error('Format cadangan tidak dikenali');
+        }
+        const data = {};
+        Object.keys(obj.data).forEach((key) => {
+          if (/^\d{4}-(0[1-9]|1[0-2])$/.test(key)) data[key] = normalizeRecord(obj.data[key]);
+        });
+        const cats = Array.isArray(obj.customCategories)
+          ? obj.customCategories.filter((c) => typeof c === 'string' && c.trim())
+          : [];
+        return { data, cats };
+      }
+
+      async function handleBackupSave() {
+        if (!Object.keys(appData).length) {
+          showToast('Belum ada data untuk dicadangkan.', 'warning');
+          return;
+        }
+        try {
+          const filename = `cadangan-dompet-keluarga-${todayStamp()}.json`;
+          const bytes = new TextEncoder().encode(JSON.stringify(buildBackupObject(), null, 2));
+          const result = await deliverFile(filename, 'application/json', bytes);
+          reportDelivery(result, filename);
+        } catch (err) {
+          console.error('Gagal membuat cadangan:', err);
+          showToast('Gagal membuat file cadangan. Coba "Salin Cadangan (Teks)".', 'error');
+        }
+      }
+
+      async function handleBackupCopy() {
+        if (!Object.keys(appData).length) {
+          showToast('Belum ada data untuk dicadangkan.', 'warning');
+          return;
+        }
+        const ok = await copyToClipboard(JSON.stringify(buildBackupObject()));
+        showToast(
+          ok ? 'Cadangan disalin. Tempel & simpan di catatan atau kirim ke WhatsApp sendiri.' : 'Gagal menyalin cadangan.',
+          ok ? 'success' : 'error'
+        );
+      }
+
+      let restoreEntry = null;
+
+      function openRestoreModal() {
+        elRestoreText.value = '';
+        elRestoreFile.value = '';
+        elRestoreModal.classList.remove('hidden');
+        elRestoreModal.classList.add('flex');
+        restoreEntry = registerModal(closeRestoreModal);
+      }
+
+      function closeRestoreModal() {
+        if (elRestoreModal.classList.contains('hidden')) return;
+        elRestoreModal.classList.add('hidden');
+        elRestoreModal.classList.remove('flex');
+        if (restoreEntry) {
+          const entry = restoreEntry;
+          restoreEntry = null;
+          unregisterModal(entry);
+        }
+      }
+
+      async function applyRestore() {
+        const text = elRestoreText.value.trim();
+        if (!text) {
+          showToast('Pilih file cadangan atau tempel teks cadangan dulu.', 'warning');
+          return;
+        }
+        let parsed;
+        try {
+          parsed = parseBackup(text);
+        } catch (err) {
+          showToast('Isi cadangan tidak valid atau bukan dari aplikasi ini.', 'error');
+          return;
+        }
+        const monthCount = Object.keys(parsed.data).length;
+        const ok = await showConfirmDialog({
+          title: 'Pulihkan Data?',
+          message: `Cadangan ini berisi ${monthCount} bulan. Data yang ada sekarang akan DIGANTI dengan data cadangan. Lanjutkan?`,
+          confirmText: 'Ya, Pulihkan',
+          isDanger: true
+        });
+        if (!ok) return;
+
+        appData = parsed.data;
+        customCategories = parsed.cats;
+        saveToStorage();
+        renderExpenseCategoryDropdown();
+        renderAll();
+        closeRestoreModal();
+        showToast('Data berhasil dipulihkan.');
       }
 
       // =========================================================================
@@ -1128,12 +1858,7 @@
         currentMonth = String(targetDate.getMonth() + 1).padStart(2, '0');
 
         // Pastikan tahun ada di dropdown
-        if (![...elSelectYear.options].some((o) => o.value === currentYear)) {
-          const opt = document.createElement('option');
-          opt.value = currentYear;
-          opt.textContent = currentYear;
-          elSelectYear.appendChild(opt);
-        }
+        ensureYearOption(currentYear);
 
         elSelectMonth.value = currentMonth;
         elSelectYear.value = currentYear;
@@ -1179,10 +1904,18 @@
       });
 
       // Hapus item pemasukan (Event delegation)
-      elListIncome.addEventListener('click', (e) => {
+      elListIncome.addEventListener('click', async (e) => {
         const btn = e.target.closest('[data-delete-income]');
         if (!btn) return;
         const id = btn.getAttribute('data-delete-income');
+        const found = ensureMonthRecord(getActiveMonthKey()).incomes.find((item) => item.id === id);
+        const ok = await showConfirmDialog({
+          title: 'Hapus pemasukan?',
+          message: `"${found ? found.source : 'Pemasukan ini'}" akan dihapus dari bulan ini.`,
+          confirmText: 'Ya, Hapus',
+          isDanger: true
+        });
+        if (!ok) return;
         const record = ensureMonthRecord(getActiveMonthKey());
         record.incomes = record.incomes.filter((item) => item.id !== id);
         saveToStorage();
@@ -1279,10 +2012,18 @@
       });
 
       // Hapus item pengeluaran (Event delegation)
-      elListExpense.addEventListener('click', (e) => {
+      elListExpense.addEventListener('click', async (e) => {
         const btn = e.target.closest('[data-delete-expense]');
         if (!btn) return;
         const id = btn.getAttribute('data-delete-expense');
+        const found = ensureMonthRecord(getActiveMonthKey()).expenses.find((item) => item.id === id);
+        const ok = await showConfirmDialog({
+          title: 'Hapus pengeluaran?',
+          message: `"${found ? found.category : 'Pengeluaran ini'}" akan dihapus dari bulan ini.`,
+          confirmText: 'Ya, Hapus',
+          isDanger: true
+        });
+        if (!ok) return;
         const record = ensureMonthRecord(getActiveMonthKey());
         record.expenses = record.expenses.filter((item) => item.id !== id);
         saveToStorage();
@@ -1291,18 +2032,35 @@
       });
 
       // Klik baris pada tabel Rekap Per Bulan untuk berpindah bulan
-      elMonthlyRecapBody.addEventListener('click', (e) => {
-        const row = e.target.closest('[data-select-month-key]');
-        if (!row) return;
+      function selectMonthFromRow(row) {
         const key = row.getAttribute('data-select-month-key');
         const [y, m] = key.split('-');
         currentYear = y;
         currentMonth = m;
+        ensureYearOption(currentYear); // tahun yang belum ada di dropdown
         elSelectYear.value = currentYear;
         elSelectMonth.value = currentMonth;
         renderAll();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      [elMonthlyRecapBody, elMonthlyRecapCards].forEach((container) => {
+        container.addEventListener('click', (e) => {
+          const row = e.target.closest('[data-select-month-key]');
+          if (row) selectMonthFromRow(row);
+        });
+        // Bisa dibuka juga lewat keyboard (Enter / Spasi)
+        container.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          const row = e.target.closest('[data-select-month-key]');
+          if (!row) return;
+          e.preventDefault();
+          selectMonthFromRow(row);
+        });
       });
+
+      elBtnExportPdf.addEventListener('click', exportRecapToPDF);
+      document.getElementById('btn-copy-recap').addEventListener('click', copyRecapText);
 
       // =========================================================================
       // FITUR CONTOH DATA & RESET DATA
@@ -1312,7 +2070,7 @@
         const confirmed = await showConfirmDialog({
           title: 'Isi Contoh Data Keluarga?',
           message:
-            'Fitur ini akan mengisi contoh catatan keuangan untuk bulan ini dan bulan lalu agar Anda bisa melihat simulasi perhitungan sisa uang & total tabungan.',
+            'Fitur ini mengisi contoh catatan untuk bulan yang sedang dipilih dan bulan sebelumnya, agar Anda bisa melihat simulasi perhitungan. Bulan yang sudah ada catatannya tidak akan ditimpa.',
           confirmText: 'Ya, Isi Contoh',
           isDanger: false
         });
@@ -1324,7 +2082,14 @@
         const prevDate = new Date(parseInt(currentYear, 10), parseInt(currentMonth, 10) - 2, 1);
         const prevKey = `${prevDate.getFullYear()}-${String(prevDate.getMonth() + 1).padStart(2, '0')}`;
 
-        appData[prevKey] = {
+        const prevHasData = calculateMonthSummary(appData[prevKey]).hasActivity;
+        const thisHasData = calculateMonthSummary(appData[thisKey]).hasActivity;
+        if (prevHasData && thisHasData) {
+          showToast('Kedua bulan sudah berisi catatan, contoh data tidak dimuat agar data Anda aman.', 'warning');
+          return;
+        }
+
+        if (!prevHasData) appData[prevKey] = {
           incomes: [
             { id: generateId(), source: 'Gaji Suami', amount: 7500000 },
             { id: generateId(), source: 'Gaji Istri', amount: 4500000 }
@@ -1339,7 +2104,7 @@
           ]
         };
 
-        appData[thisKey] = {
+        if (!thisHasData) appData[thisKey] = {
           incomes: [
             { id: generateId(), source: 'Gaji Suami', amount: 7500000 },
             { id: generateId(), source: 'Gaji Istri', amount: 4500000 },
@@ -1358,7 +2123,7 @@
 
         saveToStorage();
         renderAll();
-        showToast('Contoh data 2 bulan berhasil dimuat.');
+        showToast(prevHasData || thisHasData ? 'Contoh data dimuat untuk bulan yang masih kosong.' : 'Contoh data 2 bulan berhasil dimuat.');
       }
 
       async function handleResetAllData() {
@@ -1379,14 +2144,48 @@
         showToast('Semua data keuangan telah dihapus.');
       }
 
-      document.getElementById('btn-sample-desktop').addEventListener('click', handleLoadSampleData);
-      document.getElementById('btn-sample-mobile').addEventListener('click', handleLoadSampleData);
-      document.getElementById('btn-reset-desktop').addEventListener('click', handleResetAllData);
-      document.getElementById('btn-reset-mobile').addEventListener('click', handleResetAllData);
+      document.getElementById('btn-sample').addEventListener('click', handleLoadSampleData);
+      document.getElementById('btn-reset').addEventListener('click', handleResetAllData);
+      document.getElementById('btn-backup-save').addEventListener('click', handleBackupSave);
+      document.getElementById('btn-backup-copy').addEventListener('click', handleBackupCopy);
+      document.getElementById('btn-restore').addEventListener('click', openRestoreModal);
+      document.getElementById('restore-cancel-btn').addEventListener('click', closeRestoreModal);
+      document.getElementById('restore-ok-btn').addEventListener('click', applyRestore);
+      elRestoreModal.addEventListener('click', (e) => {
+        if (e.target === elRestoreModal) closeRestoreModal();
+      });
+      elRestoreFile.addEventListener('change', () => {
+        const file = elRestoreFile.files && elRestoreFile.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          elRestoreText.value = String(reader.result || '');
+        };
+        reader.onerror = () => showToast('File tidak bisa dibaca.', 'error');
+        reader.readAsText(file);
+      });
+
+      // Saat keyboard Android muncul, geser kolom yang sedang diisi agar tidak tertutup
+      document.addEventListener('focusin', (e) => {
+        const t = e.target;
+        if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') && t.type !== 'checkbox' && t.type !== 'file') {
+          setTimeout(() => {
+            try { t.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (err) { /* abaikan */ }
+          }, 300);
+        }
+      });
 
       // =========================================================================
       // INISIALISASI SAAT HALAMAN DIMUAT
       // =========================================================================
+      (function checkStorage() {
+        try {
+          localStorage.setItem('__cek__', '1');
+          localStorage.removeItem('__cek__');
+        } catch (err) {
+          showToast('Penyimpanan di aplikasi ini tidak aktif, data akan hilang saat ditutup.', 'error');
+        }
+      })();
       loadFromStorage();
       initYearSelector();
       renderExpenseCategoryDropdown();
